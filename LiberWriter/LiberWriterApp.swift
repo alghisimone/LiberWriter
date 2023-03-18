@@ -9,9 +9,23 @@ import SwiftUI
 
 @main
 struct LiberWriterApp: App {
+    
+    @StateObject var userSettings = UserSettings()
+
     var body: some Scene {
         DocumentGroup(newDocument: LiberWriterDocument()) { file in
-            ContentView(document: file.$document)
+            MainView()
+                .environmentObject(userSettings)
+        }
+        .commands {
+            MainMenu()
         }
     }
+}
+
+
+class UserSettings: ObservableObject {
+    @Published var showingSidebar = true
+    @Published var showSecondaryToolbar = false
+    @Published var showOnboarding = true
 }

@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		831C671329BBC9C40059C12A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 831C671229BBC9C40059C12A /* Info.plist */; };
+		831C671829BBCA000059C12A /* LiberWriter.html in Resources */ = {isa = PBXBuildFile; fileRef = 831C671629BBCA000059C12A /* LiberWriter.html */; };
+		831C671B29BBCA360059C12A /* LiberWriter.helpindex in Resources */ = {isa = PBXBuildFile; fileRef = 831C671929BBCA360059C12A /* LiberWriter.helpindex */; };
+		831C671E29BBCA4C0059C12A /* ExactMatch.plist in Resources */ = {isa = PBXBuildFile; fileRef = 831C671C29BBCA4C0059C12A /* ExactMatch.plist */; };
+		831C672129BBCA650059C12A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 831C671F29BBCA650059C12A /* InfoPlist.strings */; };
+		831C672629BBDAC90059C12A /* TableFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C672529BBDAC90059C12A /* TableFormatting.swift */; };
+		831C672929BBDFEE0059C12A /* QuickFormatParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C672829BBDFEE0059C12A /* QuickFormatParagraph.swift */; };
+		83308A9429BCEBCD006609A8 /* CodeDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83308A9329BCEBCD006609A8 /* CodeDecode.swift */; };
+		833757C229C657E4009F5967 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833757C129C657E4009F5967 /* Metadata.swift */; };
+		8337ED5829BA626500ED60A6 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5729BA626500ED60A6 /* MainMenu.swift */; };
+		8337ED5A29BA751500ED60A6 /* FormattingSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5929BA751500ED60A6 /* FormattingSidebar.swift */; };
+		8337ED5C29BA757300ED60A6 /* StylesSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5B29BA757300ED60A6 /* StylesSidebar.swift */; };
+		8337ED5E29BA75A300ED60A6 /* NavigatorSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5D29BA75A300ED60A6 /* NavigatorSidebar.swift */; };
+		8337ED6029BA75D500ED60A6 /* FourthSegmentSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5F29BA75D500ED60A6 /* FourthSegmentSidebar.swift */; };
+		833D58AD29BC743700C2F543 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 833D58AC29BC743700C2F543 /* ZIPFoundation */; };
+		833D58AF29BC749C00C2F543 /* ODTDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D58AE29BC749C00C2F543 /* ODTDocument.swift */; };
+		833D58B229BC750A00C2F543 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 833D58B129BC750A00C2F543 /* XMLCoder */; };
+		835B897A29BF6CA60070D5E2 /* ZipUnzip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B897929BF6CA60070D5E2 /* ZipUnzip.swift */; };
+		8378D3AF29B9EEFD00E3889C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8378D3AE29B9EEFD00E3889C /* MainView.swift */; };
+		8378D3B129B9F0E300E3889C /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8378D3B029B9F0E300E3889C /* SidebarView.swift */; };
 		83B80BFE29B9EED4006FBF43 /* LiberWriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80BFD29B9EED4006FBF43 /* LiberWriterApp.swift */; };
 		83B80C0029B9EED4006FBF43 /* LiberWriterDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80BFF29B9EED4006FBF43 /* LiberWriterDocument.swift */; };
 		83B80C0229B9EED4006FBF43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C0129B9EED4006FBF43 /* ContentView.swift */; };
@@ -15,6 +35,7 @@
 		83B80C1329B9EED5006FBF43 /* LiberWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C1229B9EED5006FBF43 /* LiberWriterTests.swift */; };
 		83B80C1D29B9EED5006FBF43 /* LiberWriterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C1C29B9EED5006FBF43 /* LiberWriterUITests.swift */; };
 		83B80C1F29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C1E29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift */; };
+		83DA19B829BB88C00072C1DB /* QuickFormatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA19B729BB88C00072C1DB /* QuickFormatTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +56,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		831C671229BBC9C40059C12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		831C671729BBCA000059C12A /* English */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = English; path = LiberWriter.html; sourceTree = "<group>"; };
+		831C671A29BBCA360059C12A /* EN */ = {isa = PBXFileReference; lastKnownFileType = text; name = EN; path = LiberWriter.helpindex; sourceTree = "<group>"; };
+		831C671D29BBCA4C0059C12A /* EN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = EN; path = ExactMatch.plist; sourceTree = "<group>"; };
+		831C672029BBCA650059C12A /* EN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = EN; path = InfoPlist.strings; sourceTree = "<group>"; };
+		831C672529BBDAC90059C12A /* TableFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFormatting.swift; sourceTree = "<group>"; };
+		831C672829BBDFEE0059C12A /* QuickFormatParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFormatParagraph.swift; sourceTree = "<group>"; };
+		83308A9329BCEBCD006609A8 /* CodeDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDecode.swift; sourceTree = "<group>"; };
+		833757C129C657E4009F5967 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		8337ED5729BA626500ED60A6 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		8337ED5929BA751500ED60A6 /* FormattingSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingSidebar.swift; sourceTree = "<group>"; };
+		8337ED5B29BA757300ED60A6 /* StylesSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesSidebar.swift; sourceTree = "<group>"; };
+		8337ED5D29BA75A300ED60A6 /* NavigatorSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorSidebar.swift; sourceTree = "<group>"; };
+		8337ED5F29BA75D500ED60A6 /* FourthSegmentSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthSegmentSidebar.swift; sourceTree = "<group>"; };
+		833D58AE29BC749C00C2F543 /* ODTDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODTDocument.swift; sourceTree = "<group>"; };
+		835B897929BF6CA60070D5E2 /* ZipUnzip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipUnzip.swift; sourceTree = "<group>"; };
+		8378D3AE29B9EEFD00E3889C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8378D3B029B9F0E300E3889C /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		83B80BFA29B9EED4006FBF43 /* LiberWriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiberWriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B80BFD29B9EED4006FBF43 /* LiberWriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterApp.swift; sourceTree = "<group>"; };
 		83B80BFF29B9EED4006FBF43 /* LiberWriterDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterDocument.swift; sourceTree = "<group>"; };
@@ -48,6 +87,7 @@
 		83B80C1829B9EED5006FBF43 /* LiberWriterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiberWriterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B80C1C29B9EED5006FBF43 /* LiberWriterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterUITests.swift; sourceTree = "<group>"; };
 		83B80C1E29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		83DA19B729BB88C00072C1DB /* QuickFormatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFormatTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				833D58B229BC750A00C2F543 /* XMLCoder in Frameworks */,
+				833D58AD29BC743700C2F543 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,12 +117,110 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		831C670F29BBC96D0059C12A /* LiberWriter.help */ = {
+			isa = PBXGroup;
+			children = (
+				831C671029BBC99C0059C12A /* Contents */,
+			);
+			path = LiberWriter.help;
+			sourceTree = "<group>";
+		};
+		831C671029BBC99C0059C12A /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				831C671229BBC9C40059C12A /* Info.plist */,
+				831C671129BBC9B00059C12A /* Resources */,
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		831C671129BBC9B00059C12A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				831C671529BBC9DD0059C12A /* EN.lproj */,
+				831C671429BBC9D80059C12A /* shrd */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		831C671429BBC9D80059C12A /* shrd */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = shrd;
+			sourceTree = "<group>";
+		};
+		831C671529BBC9DD0059C12A /* EN.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				831C672429BBCA7F0059C12A /* scrpt */,
+				831C672329BBCA730059C12A /* gfx */,
+				831C672229BBCA6F0059C12A /* pgs */,
+				831C671629BBCA000059C12A /* LiberWriter.html */,
+				831C671C29BBCA4C0059C12A /* ExactMatch.plist */,
+				831C671F29BBCA650059C12A /* InfoPlist.strings */,
+				831C671929BBCA360059C12A /* LiberWriter.helpindex */,
+			);
+			path = EN.lproj;
+			sourceTree = "<group>";
+		};
+		831C672229BBCA6F0059C12A /* pgs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = pgs;
+			sourceTree = "<group>";
+		};
+		831C672329BBCA730059C12A /* gfx */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = gfx;
+			sourceTree = "<group>";
+		};
+		831C672429BBCA7F0059C12A /* scrpt */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = scrpt;
+			sourceTree = "<group>";
+		};
+		831C672729BBDAD00059C12A /* FormattingWindows */ = {
+			isa = PBXGroup;
+			children = (
+				831C672529BBDAC90059C12A /* TableFormatting.swift */,
+			);
+			path = FormattingWindows;
+			sourceTree = "<group>";
+		};
+		833757C029C657C9009F5967 /* ODTDocument */ = {
+			isa = PBXGroup;
+			children = (
+				833D58AE29BC749C00C2F543 /* ODTDocument.swift */,
+				833757C129C657E4009F5967 /* Metadata.swift */,
+			);
+			path = ODTDocument;
+			sourceTree = "<group>";
+		};
+		8337ED6129BA75E000ED60A6 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				8378D3B029B9F0E300E3889C /* SidebarView.swift */,
+				8337ED5929BA751500ED60A6 /* FormattingSidebar.swift */,
+				8337ED5B29BA757300ED60A6 /* StylesSidebar.swift */,
+				8337ED5D29BA75A300ED60A6 /* NavigatorSidebar.swift */,
+				8337ED5F29BA75D500ED60A6 /* FourthSegmentSidebar.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
 		83B80BF129B9EED4006FBF43 = {
 			isa = PBXGroup;
 			children = (
 				83B80BFC29B9EED4006FBF43 /* LiberWriter */,
 				83B80C1129B9EED5006FBF43 /* LiberWriterTests */,
 				83B80C1B29B9EED5006FBF43 /* LiberWriterUITests */,
+				831C670F29BBC96D0059C12A /* LiberWriter.help */,
 				83B80BFB29B9EED4006FBF43 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,9 +239,17 @@
 			isa = PBXGroup;
 			children = (
 				83B80BFD29B9EED4006FBF43 /* LiberWriterApp.swift */,
+				8337ED5729BA626500ED60A6 /* MainMenu.swift */,
 				83B80BFF29B9EED4006FBF43 /* LiberWriterDocument.swift */,
+				833757C029C657C9009F5967 /* ODTDocument */,
+				835B897929BF6CA60070D5E2 /* ZipUnzip.swift */,
+				83308A9329BCEBCD006609A8 /* CodeDecode.swift */,
+				8378D3AE29B9EEFD00E3889C /* MainView.swift */,
 				83B80C0129B9EED4006FBF43 /* ContentView.swift */,
 				83B80C0329B9EED5006FBF43 /* Assets.xcassets */,
+				831C672729BBDAD00059C12A /* FormattingWindows */,
+				83DA19B929BB89E10072C1DB /* QuickFormats */,
+				8337ED6129BA75E000ED60A6 /* Sidebar */,
 				83B80C0829B9EED5006FBF43 /* Info.plist */,
 				83B80C0929B9EED5006FBF43 /* LiberWriter.entitlements */,
 				83B80C0529B9EED5006FBF43 /* Preview Content */,
@@ -134,6 +282,15 @@
 			path = LiberWriterUITests;
 			sourceTree = "<group>";
 		};
+		83DA19B929BB89E10072C1DB /* QuickFormats */ = {
+			isa = PBXGroup;
+			children = (
+				83DA19B729BB88C00072C1DB /* QuickFormatTable.swift */,
+				831C672829BBDFEE0059C12A /* QuickFormatParagraph.swift */,
+			);
+			path = QuickFormats;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,6 +307,10 @@
 			dependencies = (
 			);
 			name = LiberWriter;
+			packageProductDependencies = (
+				833D58AC29BC743700C2F543 /* ZIPFoundation */,
+				833D58B129BC750A00C2F543 /* XMLCoder */,
+			);
 			productName = LiberWriter;
 			productReference = 83B80BFA29B9EED4006FBF43 /* LiberWriter.app */;
 			productType = "com.apple.product-type.application";
@@ -220,8 +381,14 @@
 			knownRegions = (
 				en,
 				Base,
+				English,
+				EN,
 			);
 			mainGroup = 83B80BF129B9EED4006FBF43;
+			packageReferences = (
+				833D58AB29BC743700C2F543 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				833D58B029BC750A00C2F543 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+			);
 			productRefGroup = 83B80BFB29B9EED4006FBF43 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -239,7 +406,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B80C0729B9EED5006FBF43 /* Preview Assets.xcassets in Resources */,
+				831C672129BBCA650059C12A /* InfoPlist.strings in Resources */,
 				83B80C0429B9EED5006FBF43 /* Assets.xcassets in Resources */,
+				831C671E29BBCA4C0059C12A /* ExactMatch.plist in Resources */,
+				831C671829BBCA000059C12A /* LiberWriter.html in Resources */,
+				831C671329BBC9C40059C12A /* Info.plist in Resources */,
+				831C671B29BBCA360059C12A /* LiberWriter.helpindex in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +437,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B80C0029B9EED4006FBF43 /* LiberWriterDocument.swift in Sources */,
+				83DA19B829BB88C00072C1DB /* QuickFormatTable.swift in Sources */,
+				835B897A29BF6CA60070D5E2 /* ZipUnzip.swift in Sources */,
+				83308A9429BCEBCD006609A8 /* CodeDecode.swift in Sources */,
+				8337ED5829BA626500ED60A6 /* MainMenu.swift in Sources */,
+				833757C229C657E4009F5967 /* Metadata.swift in Sources */,
+				831C672629BBDAC90059C12A /* TableFormatting.swift in Sources */,
+				833D58AF29BC749C00C2F543 /* ODTDocument.swift in Sources */,
+				8378D3AF29B9EEFD00E3889C /* MainView.swift in Sources */,
+				8378D3B129B9F0E300E3889C /* SidebarView.swift in Sources */,
+				831C672929BBDFEE0059C12A /* QuickFormatParagraph.swift in Sources */,
+				8337ED5E29BA75A300ED60A6 /* NavigatorSidebar.swift in Sources */,
+				8337ED5C29BA757300ED60A6 /* StylesSidebar.swift in Sources */,
+				8337ED6029BA75D500ED60A6 /* FourthSegmentSidebar.swift in Sources */,
+				8337ED5A29BA751500ED60A6 /* FormattingSidebar.swift in Sources */,
 				83B80BFE29B9EED4006FBF43 /* LiberWriterApp.swift in Sources */,
 				83B80C0229B9EED4006FBF43 /* ContentView.swift in Sources */,
 			);
@@ -301,6 +487,41 @@
 			targetProxy = 83B80C1929B9EED5006FBF43 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		831C671629BBCA000059C12A /* LiberWriter.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				831C671729BBCA000059C12A /* English */,
+			);
+			name = LiberWriter.html;
+			sourceTree = "<group>";
+		};
+		831C671929BBCA360059C12A /* LiberWriter.helpindex */ = {
+			isa = PBXVariantGroup;
+			children = (
+				831C671A29BBCA360059C12A /* EN */,
+			);
+			name = LiberWriter.helpindex;
+			sourceTree = "<group>";
+		};
+		831C671C29BBCA4C0059C12A /* ExactMatch.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				831C671D29BBCA4C0059C12A /* EN */,
+			);
+			name = ExactMatch.plist;
+			sourceTree = "<group>";
+		};
+		831C671F29BBCA650059C12A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				831C672029BBCA650059C12A /* EN */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		83B80C2029B9EED5006FBF43 /* Debug */ = {
@@ -424,19 +645,21 @@
 				CODE_SIGN_ENTITLEMENTS = LiberWriter/LiberWriter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4j;
 				DEVELOPMENT_ASSET_PATHS = "\"LiberWriter/Preview Content\"";
 				DEVELOPMENT_TEAM = 7Z5RK5M5DA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LiberWriter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 0.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = it.sa.LiberWriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -452,19 +675,21 @@
 				CODE_SIGN_ENTITLEMENTS = LiberWriter/LiberWriter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4j;
 				DEVELOPMENT_ASSET_PATHS = "\"LiberWriter/Preview Content\"";
 				DEVELOPMENT_TEAM = 7Z5RK5M5DA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LiberWriter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 0.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = it.sa.LiberWriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -584,6 +809,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		833D58AB29BC743700C2F543 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			requirement = {
+				branch = development;
+				kind = branch;
+			};
+		};
+		833D58B029BC750A00C2F543 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		833D58AC29BC743700C2F543 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 833D58AB29BC743700C2F543 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		833D58B129BC750A00C2F543 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 833D58B029BC750A00C2F543 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83B80BF229B9EED4006FBF43 /* Project object */;
 }

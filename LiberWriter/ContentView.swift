@@ -6,17 +6,38 @@
 //
 
 import SwiftUI
+import Foundation
+import UniformTypeIdentifiers
+
+
 
 struct ContentView: View {
-    @Binding var document: LiberWriterDocument
-
+    @EnvironmentObject var userSettings: UserSettings
+    
+    @State private var document: ODTDocument
+    
+    
+    
+    
+    
     var body: some View {
-        TextEditor(text: $document.text)
+        // pass the document to child views
+        ChildView(document: $document)
+        
+        
+        
+        Button("Open File") {
+            presentFilePickerAndLoadDocument()
+        }
+        Button("Save") {
+                    saveDocument(document)
+                }
+            }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(document: .constant(LiberWriterDocument()))
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
