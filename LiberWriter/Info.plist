@@ -53,6 +53,8 @@
 			</dict>
 		</dict>
 	</array>
+	<key>NSAllowsDocumentSharing</key>
+	<true/>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>

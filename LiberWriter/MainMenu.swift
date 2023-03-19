@@ -103,6 +103,12 @@ struct MainMenu: Commands {
             Divider()
             Button("Donate to the Developer", action: {})
         })
+        
+        
+        CommandGroup(replacing: CommandGroupPlacement.importExport, addition: {
+            Divider()
+            Button("Open…", action: {presentFilePickerAndLoadDocument()})
+        })
                 
             }
         }

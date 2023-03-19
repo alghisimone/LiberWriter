@@ -15,7 +15,6 @@
 		831C672629BBDAC90059C12A /* TableFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C672529BBDAC90059C12A /* TableFormatting.swift */; };
 		831C672929BBDFEE0059C12A /* QuickFormatParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C672829BBDFEE0059C12A /* QuickFormatParagraph.swift */; };
 		83308A9429BCEBCD006609A8 /* CodeDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83308A9329BCEBCD006609A8 /* CodeDecode.swift */; };
-		833757C229C657E4009F5967 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833757C129C657E4009F5967 /* Metadata.swift */; };
 		8337ED5829BA626500ED60A6 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5729BA626500ED60A6 /* MainMenu.swift */; };
 		8337ED5A29BA751500ED60A6 /* FormattingSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5929BA751500ED60A6 /* FormattingSidebar.swift */; };
 		8337ED5C29BA757300ED60A6 /* StylesSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5B29BA757300ED60A6 /* StylesSidebar.swift */; };
@@ -64,7 +63,6 @@
 		831C672529BBDAC90059C12A /* TableFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFormatting.swift; sourceTree = "<group>"; };
 		831C672829BBDFEE0059C12A /* QuickFormatParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFormatParagraph.swift; sourceTree = "<group>"; };
 		83308A9329BCEBCD006609A8 /* CodeDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDecode.swift; sourceTree = "<group>"; };
-		833757C129C657E4009F5967 /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		8337ED5729BA626500ED60A6 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		8337ED5929BA751500ED60A6 /* FormattingSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingSidebar.swift; sourceTree = "<group>"; };
 		8337ED5B29BA757300ED60A6 /* StylesSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesSidebar.swift; sourceTree = "<group>"; };
@@ -88,6 +86,7 @@
 		83B80C1C29B9EED5006FBF43 /* LiberWriterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterUITests.swift; sourceTree = "<group>"; };
 		83B80C1E29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		83DA19B729BB88C00072C1DB /* QuickFormatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFormatTable.swift; sourceTree = "<group>"; };
+		83F0ACFB29C714960001D843 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,15 +192,6 @@
 			path = FormattingWindows;
 			sourceTree = "<group>";
 		};
-		833757C029C657C9009F5967 /* ODTDocument */ = {
-			isa = PBXGroup;
-			children = (
-				833D58AE29BC749C00C2F543 /* ODTDocument.swift */,
-				833757C129C657E4009F5967 /* Metadata.swift */,
-			);
-			path = ODTDocument;
-			sourceTree = "<group>";
-		};
 		8337ED6129BA75E000ED60A6 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,9 +231,10 @@
 				83B80BFD29B9EED4006FBF43 /* LiberWriterApp.swift */,
 				8337ED5729BA626500ED60A6 /* MainMenu.swift */,
 				83B80BFF29B9EED4006FBF43 /* LiberWriterDocument.swift */,
-				833757C029C657C9009F5967 /* ODTDocument */,
+				833D58AE29BC749C00C2F543 /* ODTDocument.swift */,
 				835B897929BF6CA60070D5E2 /* ZipUnzip.swift */,
 				83308A9329BCEBCD006609A8 /* CodeDecode.swift */,
+				83F0ACFB29C714960001D843 /* MyPlayground.playground */,
 				8378D3AE29B9EEFD00E3889C /* MainView.swift */,
 				83B80C0129B9EED4006FBF43 /* ContentView.swift */,
 				83B80C0329B9EED5006FBF43 /* Assets.xcassets */,
@@ -441,7 +432,6 @@
 				835B897A29BF6CA60070D5E2 /* ZipUnzip.swift in Sources */,
 				83308A9429BCEBCD006609A8 /* CodeDecode.swift in Sources */,
 				8337ED5829BA626500ED60A6 /* MainMenu.swift in Sources */,
-				833757C229C657E4009F5967 /* Metadata.swift in Sources */,
 				831C672629BBDAC90059C12A /* TableFormatting.swift in Sources */,
 				833D58AF29BC749C00C2F543 /* ODTDocument.swift in Sources */,
 				8378D3AF29B9EEFD00E3889C /* MainView.swift in Sources */,

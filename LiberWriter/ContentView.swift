@@ -12,27 +12,18 @@ import UniformTypeIdentifiers
 
 
 struct ContentView: View {
-    @EnvironmentObject var userSettings: UserSettings
-    
-    @State private var document: ODTDocument
-    
-    
-    
-    
+    @ObservedObject var documentData = DocumentData()
+    @ObservedObject var documentContents = DocumentContents()
     
     var body: some View {
-        // pass the document to child views
-        ChildView(document: $document)
-        
-        
-        
-        Button("Open File") {
-            presentFilePickerAndLoadDocument()
-        }
-        Button("Save") {
-                    saveDocument(document)
-                }
+        VStack {
+            Button("Open File") {
+                presentFilePickerAndLoadDocument()
             }
+            
+            TextEditor(text: $content)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
     
     struct ContentView_Previews: PreviewProvider {
