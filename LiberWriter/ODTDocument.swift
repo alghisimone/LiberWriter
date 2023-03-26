@@ -33,6 +33,33 @@ class DocumentContents: ObservableObject {
     @Published var resources: Data?
 }
 
+class ODTManifest: ObservableObject {
+    @Published var manifestManifest: String?
+    @Published var manifestFileEntry: FileEntry?
+    @Published var contentFile: URL?
+    @Published var stylesFile: URL?
+    @Published var elementsOfFile: URL?
+    @Published var filePrefix: URL?
+    @Published var fileSuffix: URL?
+}
+
+class FileEntry {
+    var manifestFileEntryFullPath: String?
+    var manifestFileEntryMediaType: String?
+    var manifestFileEntryPreferredViewMode: String?
+    var manifestFileEntrySize: Int?
+    var manifestFileEntryVersion: String?
+    var manifestEncryptionData: ODTEncryption?
+}
+
+class ODTEncryption {
+    var manifestChecksum: (any BinaryInteger)?
+    var manifestChecksumType: String?
+    var manifestEncryptionAlgorythm: String?
+    var manifestKeyDerivation: String?
+    var manifestStartKeyGeneration: String?
+}
+
 class ODTMetadata: Codable {
     var metadataODTGenerator: String?
     var metadataODTTitle: String?
@@ -94,15 +121,51 @@ struct ODTDocument: FileDocument, Codable {
     //var content: ODTContent
     //var style: ODTStyle
     //var settings: ODTSettings
-    //var manifest: ODTManifest
+    var manifest: ODTManifest
     //var resources: ODTResources
     
     var decoder = XMLDecoder()
     
     init(from decoder: XMLDecoder) throws {
+        
+        //General settings for the decoder
+        
         decoder.shouldProcessNamespaces = true
         decoder.dateDecodingStrategy = .secondsSince1970
         
+        enum ManifestODTCodingKeys: String, CodingKey {
+            case contentFile = "odf:ContentFile"
+            case stylesFile = "odf:StylesFile"
+            case fileElement = "odf:Element"
+            case filePrefix = "odf:prefix"
+            case fileSuffix = "odf:suffix"
+        }
+        
+        //Decode MANIFEST
+        
+        //MANIFEST Coding Keys
+        
+        
+        //Actual decodification of MANIFEST
+        
+        decoder.keyDecodingStrategy = .custom{ keys in
+            guard let lastKey = manifestODTCodingKeys.last else { return MetadataODTCodingKeys(stringValue: "")! }
+            guard let odtMetadataKey = manifestODTCoingKeys.first(where: { $0.stringValue == lastKey.stringValue }) else {
+                return lastKey
+            }
+            return odtMetadataKey
+        }
+        
+        manifest = try decoder.decode(ODTMetadata.self, from: Data(contentsOf: DocumentData().metaXML!))
+        
+        print("")
+        print("Loading new document")
+        print("")
+        
+        //Decode METADATA
+        
+        //METADATA Coding Keys
+              
         enum MetadataODTCodingKeys: String, CodingKey {
             case metadataODTGenerator = "meta:generator"
             case metadataODTTitle = "dc:title"
@@ -142,7 +205,7 @@ struct ODTDocument: FileDocument, Codable {
             case metadataODTCustomValue = "meta:user-defined"
         }
         
-        let metadataODTCodingKeys = { (path: [MetadataODTCodingKeys]) -> CodingKey in
+        let metadataODTCodingKeys: [CodingKey] = { (path: [MetadataODTCodingKeys]) -> CodingKey in
             // Map each ODTCodingKey to a CodingKey
             switch path.first {
             case .metadataODTGenerator:
@@ -222,18 +285,21 @@ struct ODTDocument: FileDocument, Codable {
             }
         }
         
-        decoder.keyDecodingStrategy = .custom({ keys in
-            let metadataODTCodingKeys: [MetadataODTCodingKeys] = [.metadataODTGenerator, .metadataODTTitle, .metadataODTDescription, .metadataODTSubject, .metadataODTKeyword, .metadataODTInitialCreator, .metadataODTCreator, .metadataODTPrintedBy, .metadataODTCreationDate, .metadataODTDate, .metadataODTPrintDate, .metadataODTTemplate, .metadataODTAutoReload, .metadataHLBehaviourTargetFrameName, .metadataHLBehaviourXLinkShow, .metadataODTLanguage, .metadataODTEditingCycles, .metadataODTEditingDuration, .metadataStatsCellCount, .metadataStatsCharacterCount, .metadataStatsDrawCount, .metadataStatsFrameCount, .metadataStatsImageCount, .metadataStatsNonWhiteCharCount, .metadataStatsObjectCount, .metadataStatsOLECount, .metadataStatsPageCount, .metadataStatsParagraphCount, .metadataStatsRowCount, .metadataStatsSentenceCount, .metadataStatsSyllableCount, .metadataStatsTableCount, .metadataStatsWordCount, .metadataODTCustomName, .metadataODTCustomKind, .metadataODTCustomValue]
-
-            return metadataODTCodingKeys.compactMap { key in
-                keys.first { $0.stringValue == key.rawValue }
-            }.first ?? keys.last
-        })
+        //Actual decodification of METADATA
+        
+        
+        decoder.keyDecodingStrategy = .custom{ keys in
+            guard let lastKey = metadataODTCodingKeys.last else { return MetadataODTCodingKeys(stringValue: "")! }
+            guard let odtMetadataKey = MetadataODTCodingKeys.first(where: { $0.stringValue == lastKey.stringValue }) else {
+                return lastKey
+            }
+            return odtMetadataKey
+        }
         
         metadata = try decoder.decode(ODTMetadata.self, from: Data(contentsOf: DocumentData().metaXML!))
         
-        // Access the decoded values
-        print("Loading document:")
+        // Access the decoded metadata values
+        print("Loading document metadata:")
         print("")
         print("Generator: \(String(describing: metadata.metadataODTCreator))") // "MicrosoftOffice/15.0 MicrosoftWord"
         print("Title: \(String(describing: metadata.metadataODTTitle))") // "Costituzione della Repubblica insuliana"
@@ -242,10 +308,18 @@ struct ODTDocument: FileDocument, Codable {
         print("Page count: \(metadata.metadataODTDocumentStatistics.metadataStatsPageCount)") // 53
         print("Word count: \(metadata.metadataODTDocumentStatistics.metadataStatsWordCount)") // 13918
         print("")
+        
+        
+        
+        
+        
+        
+    
     }
     
     init(fileWrapper: FileWrapper, contentType: UTType) throws {
         guard contentType == .openDocumentText else {
+            print("Couldn't decode file!")
             throw CocoaError(.fileReadUnsupportedScheme)
         }
     }
