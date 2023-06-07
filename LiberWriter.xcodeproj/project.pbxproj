@@ -35,6 +35,7 @@
 		83B80C1D29B9EED5006FBF43 /* LiberWriterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C1C29B9EED5006FBF43 /* LiberWriterUITests.swift */; };
 		83B80C1F29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C1E29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift */; };
 		83DA19B829BB88C00072C1DB /* QuickFormatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA19B729BB88C00072C1DB /* QuickFormatTable.swift */; };
+		83DA863529D195A2008428C7 /* CodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA863429D195A2008428C7 /* CodingKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +87,7 @@
 		83B80C1C29B9EED5006FBF43 /* LiberWriterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterUITests.swift; sourceTree = "<group>"; };
 		83B80C1E29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		83DA19B729BB88C00072C1DB /* QuickFormatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFormatTable.swift; sourceTree = "<group>"; };
-		83F0ACFB29C714960001D843 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		83DA863429D195A2008428C7 /* CodingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,9 +233,9 @@
 				8337ED5729BA626500ED60A6 /* MainMenu.swift */,
 				83B80BFF29B9EED4006FBF43 /* LiberWriterDocument.swift */,
 				833D58AE29BC749C00C2F543 /* ODTDocument.swift */,
+				83DA863429D195A2008428C7 /* CodingKeys.swift */,
 				835B897929BF6CA60070D5E2 /* ZipUnzip.swift */,
 				83308A9329BCEBCD006609A8 /* CodeDecode.swift */,
-				83F0ACFB29C714960001D843 /* MyPlayground.playground */,
 				8378D3AE29B9EEFD00E3889C /* MainView.swift */,
 				83B80C0129B9EED4006FBF43 /* ContentView.swift */,
 				83B80C0329B9EED5006FBF43 /* Assets.xcassets */,
@@ -428,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B80C0029B9EED4006FBF43 /* LiberWriterDocument.swift in Sources */,
+				83DA863529D195A2008428C7 /* CodingKeys.swift in Sources */,
 				83DA19B829BB88C00072C1DB /* QuickFormatTable.swift in Sources */,
 				835B897A29BF6CA60070D5E2 /* ZipUnzip.swift in Sources */,
 				83308A9429BCEBCD006609A8 /* CodeDecode.swift in Sources */,

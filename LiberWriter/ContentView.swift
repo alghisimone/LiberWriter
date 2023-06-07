@@ -12,8 +12,9 @@ import UniformTypeIdentifiers
 
 
 struct ContentView: View {
-    @ObservedObject var documentData = DocumentData()
-    @ObservedObject var documentContents = DocumentContents()
+    @ObservedObject var documentODTStruct = DocumentData()
+    @ObservedObject var documentODTMetadata = DocumentODTMetadata()
+    @ObservedObject var documentODTContents = DocumentContents()
     
     var body: some View {
         VStack {

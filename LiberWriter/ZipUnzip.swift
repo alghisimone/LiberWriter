@@ -10,12 +10,10 @@ import SwiftUI
 import UniformTypeIdentifiers
 import ZIPFoundation
 
-public let fileManager = FileManager()
-public let tempFolder = fileManager.temporaryDirectory
 public let appBundle = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
-public var tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(appBundle)
-public var tempCopies = tempURL.appendingPathComponent("ODT ZIPs")
-public var tempStorage = tempURL.appendingPathComponent("Extracted documents")
+public var cacheURL = try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+public var tempAppStorage = cacheURL.appendingPathComponent(appBundle)
+
 public let openPanel = NSOpenPanel()
 
 // FILE PICKER PANEL
@@ -36,32 +34,36 @@ public func presentFilePickerAndLoadDocument() {
 
 func unzipFile() {
     var chosenFile = DocumentData().fileURL
-    var copyToUnzip = tempCopies.appendingPathComponent("\(String(describing: chosenFile)).zip")
-    var unzippedFile = tempStorage.appendingPathComponent("\(String(describing: chosenFile))")
+    var tempExpandedFile = tempAppStorage.appendingPathExtension(String(describing: chosenFile))
     do {
-        try fileManager.createDirectory(at: tempCopies, withIntermediateDirectories: true)
-        try fileManager.createDirectory(at: tempStorage, withIntermediateDirectories: true)
-        try fileManager.copyItem(at: chosenFile!, to: copyToUnzip)
-        try fileManager.unzipItem(at: copyToUnzip, to: unzippedFile)
+        try FileManager().createDirectory(at: tempExpandedFile, withIntermediateDirectories: true)
+        try FileManager().unzipItem(at: chosenFile!, to: tempExpandedFile)
 
         print("XML estraction successful!")
-        print("Temp zip copy of your file is available at this address until you close LiberWriter: \(tempCopies.path())")
-        print("Temp extracted file is available at this address until you close LiberWriter: \(tempStorage.path())")
+        print("Temp extracted file is available at this address until you close LiberWriter: \(tempExpandedFile.path())")
 
     } catch {
         print("XML extraction FAILED! (Check permissions?)")
-        print("Any temp zip copy (if any) of the original ODT you selected is available at this address until you close LiberWriter: \(tempCopies.path())")
-        print("Any temp extracted and partially extracted file (if any) is available at this address until you close LiberWriter: \(tempStorage.path())")
+        print("Any temp extracted and partially extracted file (if any) is available at this address until you close LiberWriter: \(tempExpandedFile)")
     }
+    
+        var documentContentURL: URL?
+        var documentStylesURL: URL?
+        var documentMetaURL: URL?
+        var documentSettingsURL: URL?
+        var documentManifestURL: URL?
+        var documentResourcesURL:URL?
+    
+    documentContentURL = tempExpandedFile.appending(component: "/content.xml")
 }
 
 func deleteTemps() {
     do {
-        try fileManager.removeItem(atPath: "\(tempURL.path())/*")
-        print("Purged LiberWriter temp files at: \(tempURL.path()).")
+        try FileManager().removeItem(atPath: "\(tempAppStorage.path())/*")
+        print("Purged LiberWriter temp files at: \(tempAppStorage.path()).")
 
     } catch {
         print("Couldn't delete temp files! (Permissions?)")
-        print("To delete them manually, temp folder is located at: \(tempURL.path())")
+        print("To delete them manually, temp folder is located at: \(tempAppStorage.path())")
     }
 }

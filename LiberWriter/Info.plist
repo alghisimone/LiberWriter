@@ -15,24 +15,31 @@
 			<array>
 				<string>org.oasis-open.opendocument.text</string>
 			</array>
+			<key>NSDocumentClass</key>
+			<string>NSDocument</string>
 			<key>NSUbiquitousDocumentUserActivityType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).example-document</string>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).odt</string>
 		</dict>
 	</array>
 	<key>CFBundleHelpBookFolder</key>
 	<string>LiberWriter.help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>it.sa.LiberWriter.help</string>
+	<key>NSAllowsDocumentSharing</key>
+	<true/>
 	<key>UTExportedTypeDeclarations</key>
+	<array/>
+	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>Codable</string>
-				<string>Data</string>
+				<string>public.codable</string>
+				<string>public.data</string>
+				<string>public.content</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>OpenDocument Text</string>
+			<string>Example Text</string>
 			<key>UTTypeIcons</key>
 			<dict>
 				<key>UTTypeIconText</key>
@@ -49,31 +56,6 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/vnd.oasis.opendocument.text</string>
-				</array>
-			</dict>
-		</dict>
-	</array>
-	<key>NSAllowsDocumentSharing</key>
-	<true/>
-	<key>UTImportedTypeDeclarations</key>
-	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>Codable</string>
-				<string>Data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Example Text</string>
-			<key>UTTypeIcons</key>
-			<dict/>
-			<key>UTTypeIdentifier</key>
-			<string>com.example.plain-text</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>exampletext</string>
 				</array>
 			</dict>
 		</dict>

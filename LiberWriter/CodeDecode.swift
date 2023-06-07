@@ -11,19 +11,18 @@ import XMLCoder
 
 func DecodeXMLMeta() throws {
     
-    /// Here there is no var or let to reference the meta.xml file since it has been set in the ZipUnzip and passed to DocumentData class in ODTDocument (or it should be, at least)
-    ///
+/// Here there is no var or let to reference the meta.xml file since it has been set in the ZipUnzip and passed to DocumentData class in ODTDocument (or it should be, at least)
     
     // Create an instance of the XMLDecoder class
     let decoder = XMLDecoder()
     
     // Set the decoding strategy to use for element names
-    decoder.keyDecodingStrategy = .convertFromKebabCase
+    decoder.keyDecodingStrategy = .custom(MetadataODTCodingKeys)
     decoder.shouldProcessNamespaces = true
     
     // Decode the XML data into the desired type(s)
     
-    guard var meta = try decoder.decode(ODTDocument().metadata, from: DocumentData().metaXML!.dataRepresentation) else {
+    guard var meta = try decoder.decode(documentODTStruct().documentContents.documentMeta, from: documentMetaURL().metaXML!.dataRepresentation) else {
         fatalError("Unable to get meta.xml of ODT bundle")
     }
     

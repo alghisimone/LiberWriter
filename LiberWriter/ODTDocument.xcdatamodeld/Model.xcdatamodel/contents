@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DocumentStatistics" representedClassName="DocumentStatistics" parentEntity="Metadata" syncable="YES" codeGenerationType="class">
+        <relationship name="docstatsToMetadataBehaviour" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Metadata" inverseName="documentStatisticsBehaviour" inverseEntity="Metadata"/>
+    </entity>
+    <entity name="HyperLinkBehaviour" representedClassName="HyperLinkBehaviour" isAbstract="YES" parentEntity="Metadata" syncable="YES" codeGenerationType="class">
+        <attribute name="metadataHLBehaviourTargetFrameName" optional="YES" attributeType="String"/>
+        <attribute name="metadataHLBehaviourXLinkShow" optional="YES" attributeType="String"/>
+        <relationship name="hlBehaviourToMetadata" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Metadata" inverseName="hyperLinkBehaviour" inverseEntity="Metadata"/>
+    </entity>
+    <entity name="Metadata" representedClassName="Metadata" isAbstract="YES" parentEntity="ODTDocument" syncable="YES" codeGenerationType="class">
+        <attribute name="metadataODTAutoReload" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="metadataODTCreationDate" optional="YES" attributeType="Date" allowsCloudEncryption="YES" usesScalarValueType="NO" spotlightIndexingEnabled="YES"/>
+        <attribute name="metadataODTCreator" optional="YES" attributeType="String" allowsCloudEncryption="YES" spotlightIndexingEnabled="YES"/>
+        <attribute name="metadataODTDate" optional="YES" attributeType="Date" usesScalarValueType="NO" spotlightIndexingEnabled="YES"/>
+        <attribute name="metadataODTDescription" optional="YES" attributeType="String" allowsCloudEncryption="YES" spotlightIndexingEnabled="YES"/>
+        <attribute name="metadataODTEditingCycles" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="metadataODTEditingDuration" optional="YES" attributeType="String"/>
+        <attribute name="metadataODTGenerator" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
+        <attribute name="metadataODTInitialCreator" optional="YES" attributeType="String" allowsCloudEncryption="YES" spotlightIndexingEnabled="YES"/>
+        <attribute name="metadataODTKeyword" optional="YES" attributeType="String" allowsCloudEncryption="YES" spotlightIndexingEnabled="YES"/>
+        <attribute name="metadataODTLanguage" optional="YES" attributeType="String"/>
+        <attribute name="metadataODTPrintDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="metadataODTPrintedBy" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
+        <attribute name="metadataODTSubject" optional="YES" attributeType="String" allowsCloudEncryption="YES" spotlightIndexingEnabled="YES"/>
+        <attribute name="metadataODTTemplate" optional="YES" attributeType="URI" defaultValueString="normal"/>
+        <attribute name="metadataODTTitle" optional="YES" attributeType="String" allowsCloudEncryption="YES" spotlightIndexingEnabled="YES"/>
+        <relationship name="documentStatisticsBehaviour" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocumentStatistics" inverseName="docstatsToMetadataBehaviour" inverseEntity="DocumentStatistics"/>
+        <relationship name="hyperLinkBehaviour" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HyperLinkBehaviour" inverseName="hlBehaviourToMetadata" inverseEntity="HyperLinkBehaviour"/>
+    </entity>
+    <entity name="ODTDocument" representedClassName="ODTDocument" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="contentXML" attributeType="URI"/>
+        <attribute name="manifestXML" attributeType="URI"/>
+        <attribute name="metadataXML" attributeType="URI"/>
+        <attribute name="settingsXML" attributeType="URI"/>
+        <attribute name="stylesXML" attributeType="URI"/>
+        <relationship name="metadataRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Metadata"/>
+    </entity>
+    <entity name="UserDefinedMetadata" representedClassName="UserDefinedMetadata" parentEntity="Metadata" syncable="YES" codeGenerationType="class"/>
+</model>

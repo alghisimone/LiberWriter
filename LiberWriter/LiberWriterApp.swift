@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct LiberWriterApp: App {
     
+    @StateObject var document = ODTDocument()
     @StateObject var userSettings = UserSettings()
 
     var body: some Scene {
         DocumentGroup(newDocument: LiberWriterDocument()) { file in
             MainView()
                 .environmentObject(userSettings)
+                .environmentObject(document)
         }
         .commands {
             MainMenu()

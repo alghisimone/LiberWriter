@@ -10,12 +10,199 @@ import SwiftUI
 import UniformTypeIdentifiers
 import XMLCoder
 import ZIPFoundation
+import CoreData
+
+let decoder = XMLDecoder()
 
 extension UTType {
     static var openDocumentText: UTType {
-        UTType(exportedAs: "org.oasis-open.opendocument.text")
+        UTType(importedAs: "org.oasis-open.opendocument.text")
+        UTType(filenameExtension: ".odt")
+        UTTypeReference(filenameExtension: ".odt")
+        UTType(mimeType: "")
     }
 }
+
+/// The Structure of the ODF Document should be set when decoding, but it also should be an ObservableObject
+
+class documentODTStruct: Codable, ObservableObject {
+    public var metaXML: URL?
+    public var contentXML: URL?
+    public var documentBundle: Codable?
+    public var manifestXML: URL!
+    }
+
+class documentBundle: Codable, ObservableObject {
+    public var documentManifest: documentManifest!
+    public var documentSettings: documentSettings
+    public var documentMeta: documentMeta
+    
+    class documentManifest: Codable, ObservableObject {
+        public var manifestManifest:
+        public var manifestFileEntry: [manifestFileEntry]
+        public var manifestEncryptedKey:
+        
+        public enum documentManifestCodingKeys: String, CodingKey {
+            case manifestManifest = "manifest:manifest"
+            case manifestEncrypedKey = "manifest:encrypted-key"
+        }
+        
+        
+        class manifestFileEntry: Codable, ObservableObject {
+            public var manifestFileEntryPath: URL?
+            public var manifestFileEntryMediaType: UTType?
+            public var manifestFileEntryPreferredViewMode: String?
+            public var manifestFileEntrySize: Int?
+            public var manifestFileEntryVersion: Double?
+            public var manifestFileEntryEncryptionData: fileEntryEncryptionData?
+            
+            class fileEntryEncryptionData: Codable, ObservableObject {
+                public var fileEntryEncryptionDataChecksum: String?
+                public var fileEntryEncryptionDataChecksumType: String?
+                public var fileEntryEncryptionDataAlgorithm: fileEntryEncryptionDataAlgorithm?
+                public var fileEntryEncryptionDataKeyDerivation: fileEntryEncryptionDataKeyDerivation?
+                public var fileEntryEncryptionDataStartKeyGeneration: fileEntryEncryptionDataStartKeyGeneration?
+                
+                class fileEntryEncryptionDataAlgorithm: Codable, ObservableObject {
+                    public var entryEncryptionDataAlgorithmName: String?
+                    public var entryEncryptionInitialisationVector: Data
+                }
+                
+            }
+        }
+        
+    }
+        
+    class documentMeta: Codable, ObservableObject {
+        public var metadataODFGenerator: String?
+        public var metadataODFTitle: String?
+        public var metadataODFDescription: String?
+        public var metadataODFSubject: String?
+        public var metadataODFKeyword: String?
+        public var metadataODFInitialCreator: String?
+        public var metadataODFCreator: String?
+        public var metadataODFPrintedBy: String?
+        public var metadataODFCreationDate: Date?
+        public var metadataODFDate: Date?
+        public var metadataODFPrintDate: Date?
+        public var metadataODFTemplate: String?
+        public var metadataODFAutoReload: Bool?
+        public var hyperlinkBehaviour: hyperlinkBehaviour?
+        public var metadataODFLanguage: String?
+        public var metadataODFEditingCycles: Int?
+        public var metadataODFEditingDuration: Int?
+        public var metadataODFDocumentStatistics: metadataODFDocumentStatistics?
+        public var metadataODFUserDefined: [metadataODFUserDefined?]
+        
+        public enum documentMetaCodingKeys: String, CodingKey {
+            case metadataODFGenerator = "meta:generator"
+            case metadataODFTtitle = "dc:title"
+            case metadataODFDescription = "dc:description"
+            case metadataODFSubject = "dc:subject"
+            case metadataODFKeyword = "dc:keyword"
+            case metadataODFInitialCreator = "meta:initial-creator"
+            case metadataODFCreator = "dc:creator"
+            case metadataODFPrintedBy = "meta:printed-by"
+            case metadataODFCreationDate = "meta:creation-date"
+            case metadataODFDate = "dc.date"
+            case metadataODFPrintDate = "meta:print-date"
+            case metadataODFTemplate = "meta:template"
+            case metadataODFAutoReload = "meta:auto-reload"
+            case metadataODFLanguage = "dc:language"
+            case metadataODFEditingCycles = "meta:editing-cycles"
+            case metadataODFEditingDuration = "meta:editing-duration"
+        }
+        
+        class hyperlinkBehaviour: Codable, ObservableObject {
+            public var metadataHLBehaviourTargetFrameName: String?
+            public var metadataHLBehaviourXLinkShow: String?
+            
+            public enum hyperlinkBehaviourCodingKeys: String, CodingKey {
+                case metadataHLBehaviourTargetFrameName = "office:target-frame-name"
+                case metadataHLBehaviourXLinkShow = "xlink:show"
+            }
+        }
+        class metadataODFDocumentStatistics: Codable, ObservableObject {
+            public var metadataStatsCellCount: Int
+            public var metadataStatsCharacterCount: Int
+            public var metadataStatsDrawCount: Int
+            public var metadataStatsFrameCount: Int
+            public var metadataStatsImageCount: Int
+            public var metadataStatsNonWhiteCharCount: Int
+            public var metadataStatsObjectCount: Int
+            public var metadataStatsOLECount: Int
+            public var metadataStatsPageCount: Int
+            public var metadataStatsParagraphCount: Int
+            public var metadataStatsRowCount: Int
+            public var metadataStatsSentenceCount: Int
+            public var metadataStatsSyllableCount: Int
+            public var metadataStatsTableCount: Int
+            public var metadataStatsWordCount: Int
+            
+            public enum metadataODFDocumentStatistics: String, CodingKey {
+                case metadataStatsCellCount = "meta:cell-count"
+                case metadataStatsCharacterCount = "meta:character-count"
+                case metadataStatsDrawCount = "meta:draw-count"
+                case metadataStatsFrameCount = "meta:frame-count"
+                case metadataStatsImageCount = "meta:image-count"
+                case metadataStatsNonWhiteCharCount = "meta:non-whitespace-character-count"
+                case metadataStatsObjectCount = "meta:object-count"
+                case metadataStatsOLECount = "meta:ole-object-count"
+                case metadataStatsPageCount = "meta:page-count"
+                case metadataStatsParagraphCount = "meta:paragraph-count"
+                case metadataStatsRowCount = "meta:row-count"
+                case metadataStatsSentenceCount = "meta:sentence-count"
+                case metadataStatsSyllableCount = "meta:syllable-count"
+                case metadataStatsTableCount = "meta:table-count"
+                case metadataStatsWordCount = "meta:word-count"
+            }
+        }
+        class metadataODFUserDefined: Codable, ObservableObject {
+            public var metadataODFCustomName: String?
+            public var metadataODFCustomValue: String?
+            public var metadataODFCustomKind: String?
+            
+            public enum metadataODFUserDefinedCodingKeys: String, CodingKey {
+                case metadataODFCustomName = "meta:name"
+                case metadataODFCustomKind = "meta:value-type"
+                case metadataODFCustomValue = "meta:user-defined"
+            }
+            
+        }
+    }
+
+        
+        public var documentManifest: Codable {
+            
+        }
+        public var documentStyles: Codable {
+            
+        }
+
+        public var documentSettings: Codable {
+            
+        }
+        public var documentContent: Codable {
+            
+        }
+        public var resources: Codable {
+            
+        }
+    }
+    public var settingsXML: URL?
+}
+
+
+
+
+
+
+
+
+
+
+
+    
 
 class DocumentData: ObservableObject {
     @Published var fileURL: URL?
@@ -33,61 +220,70 @@ class DocumentContents: ObservableObject {
     @Published var resources: Data?
 }
 
-class ODTManifest: ObservableObject {
+class ODFManifest: ObservableObject {
     @Published var manifestManifest: String?
+    @Published var manifestVersion: String?
+    @Published var manifestEncryptedKey: EncryptedKey?
     @Published var manifestFileEntry: FileEntry?
     @Published var contentFile: URL?
     @Published var stylesFile: URL?
     @Published var elementsOfFile: URL?
     @Published var filePrefix: URL?
     @Published var fileSuffix: URL?
+    
+    class FileEntry {
+        var manifestFileEntryFullPath: String?
+        var manifestFileEntryMediaType: String?
+        var manifestFileEntryPreferredViewMode: String?
+        var manifestFileEntrySize: Int?
+        var manifestFileEntryVersion: String?
+        var manifestEncryptionData: ODFEncryption?
+    }
+    
+    class ODFEncryption {
+        var manifestChecksum: (any BinaryInteger)?
+        var manifestChecksumType: String?
+        var manifestEncryptionAlgorythm: String?
+        var manifestKeyDerivation: String?
+        var manifestStartKeyGeneration: String?
+    }
+    
+    class EncryptedKey {
+        var manifestChypherData: ChypherValue?
+        var manifestEncryptionMethod:
+        var manifestKeyInfo: 
+    }
 }
 
-class FileEntry {
-    var manifestFileEntryFullPath: String?
-    var manifestFileEntryMediaType: String?
-    var manifestFileEntryPreferredViewMode: String?
-    var manifestFileEntrySize: Int?
-    var manifestFileEntryVersion: String?
-    var manifestEncryptionData: ODTEncryption?
-}
 
-class ODTEncryption {
-    var manifestChecksum: (any BinaryInteger)?
-    var manifestChecksumType: String?
-    var manifestEncryptionAlgorythm: String?
-    var manifestKeyDerivation: String?
-    var manifestStartKeyGeneration: String?
-}
-
-class ODTMetadata: Codable {
-    var metadataODTGenerator: String?
-    var metadataODTTitle: String?
-    var metadataODTDescription: String?
-    var metadataODTSubject: String?
-    var metadataODTKeyword: String?
-    var metadataODTInitialCreator: String?
-    var metadataODTCreator: String?
-    var metadataODTPrintedBy: String?
-    var metadataODTCreationDate: Date?
-    var metadataODTDate: Date?
-    var metadataODTPrintDate: Date?
-    var metadataODTTemplate: String?
-    var metadataODTAutoReload: Bool?
+class ODFMetadata: Codable {
+    var metadataODFGenerator: String?
+    var metadataODFTitle: String?
+    var metadataODFDescription: String?
+    var metadataODFSubject: String?
+    var metadataODFKeyword: String?
+    var metadataODFInitialCreator: String?
+    var metadataODFCreator: String?
+    var metadataODFPrintedBy: String?
+    var metadataODFCreationDate: Date?
+    var metadataODFDate: Date?
+    var metadataODFPrintDate: Date?
+    var metadataODFTemplate: String?
+    var metadataODFAutoReload: Bool?
     var hyperlinkBehaviour: HyperlinkBehaviour
-    var metadataODTLanguage: String?
-    var metadataODTEditingCycles: Int?
-    var metadataODTEditingDuration: Int?
-    var metadataODTDocumentStatistics: ODTDocumentStatistics
-    var metadataODTUserDefined: ODTMetadataUserDefined
+    var metadataODFLanguage: String?
+    var metadataODFEditingCycles: Int?
+    var metadataODFEditingDuration: Int?
+    var metadataODFDocumentStatistics: ODFDocumentStatistics
+    var metadataODFUserDefined: ODFMetadataUserDefined
 
-    class ODTMetadataUserDefined: Codable {
-        var metadataODTCustomName: String?
-        var metadataODTCustomValue: String?
-        var metadataODTCustomKind: String?
+    class ODFMetadataUserDefined: Codable {
+        var metadataODFCustomName: String?
+        var metadataODFCustomValue: String?
+        var metadataODFCustomKind: String?
     }
 
-    class ODTDocumentStatistics: Codable {
+    class ODFDocumentStatistics: Codable {
         var metadataStatsCellCount: Int
         var metadataStatsCharacterCount: Int
         var metadataStatsDrawCount: Int
@@ -113,27 +309,26 @@ class ODTMetadata: Codable {
 }
 
 
-struct ODTDocument: FileDocument, Codable {
+
+
+struct ODFDocument: FileDocument, Codable {
     static var readableContentTypes: [UTType] { [.openDocumentText] }
     static var writableContentTypes: [UTType] { [.openDocumentText] }
     
-    var metadata: ODTMetadata
-    //var content: ODTContent
-    //var style: ODTStyle
-    //var settings: ODTSettings
-    var manifest: ODTManifest
-    //var resources: ODTResources
-    
-    var decoder = XMLDecoder()
+    var metadata: ODFMetadata
+    //var content: ODFContent
+    //var style: ODFStyle
+    //var settings: ODFSettings
+    var manifest: ODFManifest
+    //var resources: ODFResources
     
     init(from decoder: XMLDecoder) throws {
         
         //General settings for the decoder
         
         decoder.shouldProcessNamespaces = true
-        decoder.dateDecodingStrategy = .secondsSince1970
         
-        enum ManifestODTCodingKeys: String, CodingKey {
+        enum ManifestODFCodingKeys: String, CodingKey {
             case contentFile = "odf:ContentFile"
             case stylesFile = "odf:StylesFile"
             case fileElement = "odf:Element"
@@ -141,172 +336,31 @@ struct ODTDocument: FileDocument, Codable {
             case fileSuffix = "odf:suffix"
         }
         
-        //Decode MANIFEST
-        
-        //MANIFEST Coding Keys
-        
-        
-        //Actual decodification of MANIFEST
-        
-        decoder.keyDecodingStrategy = .custom{ keys in
-            guard let lastKey = manifestODTCodingKeys.last else { return MetadataODTCodingKeys(stringValue: "")! }
-            guard let odtMetadataKey = manifestODTCoingKeys.first(where: { $0.stringValue == lastKey.stringValue }) else {
-                return lastKey
-            }
-            return odtMetadataKey
-        }
-        
-        manifest = try decoder.decode(ODTMetadata.self, from: Data(contentsOf: DocumentData().metaXML!))
-        
-        print("")
-        print("Loading new document")
-        print("")
+
+        print("--- Loading new document ---")
         
         //Decode METADATA
         
         //METADATA Coding Keys
               
-        enum MetadataODTCodingKeys: String, CodingKey {
-            case metadataODTGenerator = "meta:generator"
-            case metadataODTTitle = "dc:title"
-            case metadataODTDescription = "dc:description"
-            case metadataODTSubject = "dc:subject"
-            case metadataODTKeyword = "dc:keyword"
-            case metadataODTInitialCreator = "meta:initial-creator"
-            case metadataODTCreator = "dc:creator"
-            case metadataODTPrintedBy = "meta:printed-by"
-            case metadataODTCreationDate = "meta:creation-date"
-            case metadataODTDate = "dc:date"
-            case metadataODTPrintDate = "meta:print-date"
-            case metadataODTTemplate = "meta:template"
-            case metadataODTAutoReload = "meta:auto-reload"
-            case metadataHLBehaviourTargetFrameName = "office:target-frame-name"
-            case metadataHLBehaviourXLinkShow = "xlink:show"
-            case metadataODTLanguage = "dc:language"
-            case metadataODTEditingCycles = "meta:editing-cycles"
-            case metadataODTEditingDuration = "meta:editing-duration"
-            case metadataStatsCellCount = "meta:cell-count"
-            case metadataStatsCharacterCount = "meta:character-count"
-            case metadataStatsDrawCount = "meta:draw-count"
-            case metadataStatsFrameCount = "meta:frame-count"
-            case metadataStatsImageCount = "meta:image-count"
-            case metadataStatsNonWhiteCharCount = "meta:non-whitespace-character-count"
-            case metadataStatsObjectCount = "meta:object-count"
-            case metadataStatsOLECount = "meta:ole-object-count"
-            case metadataStatsPageCount = "meta:page-count"
-            case metadataStatsParagraphCount = "meta:paragraph-count"
-            case metadataStatsRowCount = "meta:row-count"
-            case metadataStatsSentenceCount = "meta:sentence-count"
-            case metadataStatsSyllableCount = "meta:syllable-count"
-            case metadataStatsTableCount = "meta:table-count"
-            case metadataStatsWordCount = "meta:word-count"
-            case metadataODTCustomName = "meta:name"
-            case metadataODTCustomKind = "meta:value-type"
-            case metadataODTCustomValue = "meta:user-defined"
-        }
-        
-        let metadataODTCodingKeys: [CodingKey] = { (path: [MetadataODTCodingKeys]) -> CodingKey in
-            // Map each ODTCodingKey to a CodingKey
-            switch path.first {
-            case .metadataODTGenerator:
-                return CodingKeys(stringValue: "meta:generator")!
-            case .metadataODTTitle:
-                return CodingKeys(stringValue: "dc:title")!
-            case .metadataODTDescription:
-                return CodingKeys(stringValue: "dc:description")!
-            case .metadataODTSubject:
-                return CodingKeys(stringValue: "dc:subject")!
-            case .metadataODTKeyword:
-                return CodingKeys(stringValue: "dc:keyword")!
-            case .metadataODTInitialCreator:
-                return CodingKeys(stringValue: "dc:initial-creator")!
-            case .metadataODTCreator:
-                return CodingKeys(stringValue: "dc:creator")!
-            case .metadataODTPrintedBy:
-                return CodingKeys(stringValue: "meta:printed-by")!
-            case .metadataODTCreationDate:
-                return CodingKeys(stringValue: "meta:creation-date")!
-            case .metadataODTDate:
-                return CodingKeys(stringValue: "dc:date")!
-            case .metadataODTPrintDate:
-                return CodingKeys(stringValue: "meta:print-date")!
-            case .metadataODTTemplate:
-                return CodingKeys(stringValue: "meta:template")!
-            case .metadataODTAutoReload:
-                return CodingKeys(stringValue: "meta:auto-reload")!
-            case .metadataHLBehaviourTargetFrameName:
-                return CodingKeys(stringValue: "office:target-frame-name")!
-            case .metadataHLBehaviourXLinkShow:
-                return CodingKeys(stringValue: "xlink:show")!
-            case .metadataODTLanguage:
-                return CodingKeys(stringValue: "dc:language")!
-            case .metadataODTEditingCycles:
-                return CodingKeys(stringValue: "meta:editing-cycles")!
-            case .metadataODTEditingDuration:
-                return CodingKeys(stringValue: "meta:editing-duration")!
-            case .metadataStatsCellCount:
-                return CodingKeys(stringValue: "meta:cell-count")!
-            case .metadataStatsCharacterCount:
-                return CodingKeys(stringValue: "meta:character-count")!
-            case .metadataStatsDrawCount:
-                return CodingKeys(stringValue: "meta:draw-count")!
-            case .metadataStatsFrameCount:
-                return CodingKeys(stringValue: "meta:frame-count")!
-            case .metadataStatsImageCount:
-                return CodingKeys(stringValue: "meta:image-count")!
-            case .metadataStatsNonWhiteCharCount:
-                return CodingKeys(stringValue: "meta:non-whitespace-character-count")!
-            case .metadataStatsObjectCount:
-                return CodingKeys(stringValue: "meta:object-count")!
-            case .metadataStatsOLECount:
-                return CodingKeys(stringValue: "meta:ole-object-count")!
-            case .metadataStatsPageCount:
-                return CodingKeys(stringValue: "meta:page-count")!
-            case .metadataStatsParagraphCount:
-                return CodingKeys(stringValue: "meta:paragraph-count")!
-            case .metadataStatsRowCount:
-                return CodingKeys(stringValue: "meta:row-count")!
-            case .metadataStatsSentenceCount:
-                return CodingKeys(stringValue: "meta:sentence-count")!
-            case .metadataStatsSyllableCount:
-                return CodingKeys(stringValue: "meta:syllable-count")!
-            case .metadataStatsTableCount:
-                return CodingKeys(stringValue: "meta:table-count")!
-            case .metadataStatsWordCount:
-                return CodingKeys(stringValue: "meta:word-count")!
-            case .metadataODTCustomName:
-                return CodingKeys(stringValue: "meta:name")!
-            case .metadataODTCustomKind:
-                return CodingKeys(stringValue: "meta:value-type")!
-            case .metadataODTCustomValue:
-                return CodingKeys(stringValue: "meta:user-defined")!
-            case .none:
-                return CodingKeys(stringValue: "")!
-            }
-        }
+
         
         //Actual decodification of METADATA
         
         
-        decoder.keyDecodingStrategy = .custom{ keys in
-            guard let lastKey = metadataODTCodingKeys.last else { return MetadataODTCodingKeys(stringValue: "")! }
-            guard let odtMetadataKey = MetadataODTCodingKeys.first(where: { $0.stringValue == lastKey.stringValue }) else {
-                return lastKey
-            }
-            return odtMetadataKey
-        }
+        decoder.keyDecodingStrategy = .custom{ keys in metadataODFCodingKeys as! any CodingKey}
         
-        metadata = try decoder.decode(ODTMetadata.self, from: Data(contentsOf: DocumentData().metaXML!))
+        metadata = try decoder.decode(ODFMetadata.self, from: Data(contentsOf: DocumentData().metaXML!))
         
         // Access the decoded metadata values
         print("Loading document metadata:")
         print("")
-        print("Generator: \(String(describing: metadata.metadataODTCreator))") // "MicrosoftOffice/15.0 MicrosoftWord"
-        print("Title: \(String(describing: metadata.metadataODTTitle))") // "Costituzione della Repubblica insuliana"
-        print("Creator: \(String(describing: metadata.metadataODTCreator))") // "Simone Alghisi"
-        print("Date: \(String(describing: metadata.metadataODTDate))") // "2023-03-03T12:07:00Z"
-        print("Page count: \(metadata.metadataODTDocumentStatistics.metadataStatsPageCount)") // 53
-        print("Word count: \(metadata.metadataODTDocumentStatistics.metadataStatsWordCount)") // 13918
+        print("Generator: \(String(describing: metadata.metadataODFCreator))") // "MicrosoftOffice/15.0 MicrosoftWord"
+        print("Title: \(String(describing: metadata.metadataODFTitle))") // "Costituzione della Repubblica insuliana"
+        print("Creator: \(String(describing: metadata.metadataODFCreator))") // "Simone Alghisi"
+        print("Date: \(String(describing: metadata.metadataODFDate))") // "2023-03-03T12:07:00Z"
+        print("Page count: \(metadata.metadataODFDocumentStatistics.metadataStatsPageCount)") // 53
+        print("Word count: \(metadata.metadataODFDocumentStatistics.metadataStatsWordCount)") // 13918
         print("")
         
         
@@ -324,3 +378,4 @@ struct ODTDocument: FileDocument, Codable {
         }
     }
 }
+///
