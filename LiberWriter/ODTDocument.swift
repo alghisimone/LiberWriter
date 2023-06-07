@@ -37,24 +37,38 @@ class documentBundle: Codable, ObservableObject {
     public var documentSettings: documentSettings
     public var documentMeta: documentMeta
     
+    public enum documentBundleCodingKeys: String, CodingKey {
+        case documentManifest = "manifest:manifest"
+        case documentSettings = ""
+        case documentMeta = ""
+    }
+    
     class documentManifest: Codable, ObservableObject {
-        public var manifestManifest:
+        public var manifestVersion: String?
         public var manifestFileEntry: [manifestFileEntry]
-        public var manifestEncryptedKey:
         
         public enum documentManifestCodingKeys: String, CodingKey {
             case manifestManifest = "manifest:manifest"
             case manifestEncrypedKey = "manifest:encrypted-key"
+            case manifestVersion = "manifest:version"
         }
-        
         
         class manifestFileEntry: Codable, ObservableObject {
             public var manifestFileEntryPath: URL?
-            public var manifestFileEntryMediaType: UTType?
+            public var manifestFileEntryMediaType: String?
             public var manifestFileEntryPreferredViewMode: String?
             public var manifestFileEntrySize: Int?
             public var manifestFileEntryVersion: Double?
             public var manifestFileEntryEncryptionData: fileEntryEncryptionData?
+            
+            public enum manifestFileEntryCodingKeys: String, CodingKey {
+                case manifestFileEntryPath = "manifest:full-path"
+                case manifestFileEntryMediaType = "manifest:media-type"
+                case manifestFileEntryPreferredViewMode = "manifest:preferred-view-mode"
+                case manifestFileEntrySize = "manifest:size"
+                case manifestFileEntryVersion = "manifest:version"
+                case manifestFileEntryEncryptionData = "manifest:encryption-data"
+            }
             
             class fileEntryEncryptionData: Codable, ObservableObject {
                 public var fileEntryEncryptionDataChecksum: String?
@@ -63,9 +77,44 @@ class documentBundle: Codable, ObservableObject {
                 public var fileEntryEncryptionDataKeyDerivation: fileEntryEncryptionDataKeyDerivation?
                 public var fileEntryEncryptionDataStartKeyGeneration: fileEntryEncryptionDataStartKeyGeneration?
                 
+                public enum fileEntryEncryptionDataCodingKeys: String, CodingKey {
+                    case fileEntryEncryptionDataChecksum = "manifest:checksum"
+                    case fileEntryEncryptionDataChecksumType = "manifest:checksum-type"
+                    case fileEntryEncryptionDataAlgorithm = "manifest:algorithm"
+                    case fileEntryEncryptionDataKeyDerivation = "manifest:key-derivation"
+                    case fileEntryEncryptionDataStartKeyGeneration = "manifest:start-key-generation"
+                }
+                
                 class fileEntryEncryptionDataAlgorithm: Codable, ObservableObject {
                     public var entryEncryptionDataAlgorithmName: String?
-                    public var entryEncryptionInitialisationVector: Data
+                    public var entryEncryptionInitialisationVector: Data?
+                    
+                    public enum fileEntryEncryptionDataAlgorithmCodingKeys: String, CodingKey {
+                        case entryEncryptionDataAlgorithmName = "manifest:algorithm-name"
+                        case entryEncryptionInitialisationVector = "manifest:initialisation-vector"
+                    }
+                }
+                class fileEntryEncryptionDataKeyDerivation: Codable, ObservableObject {
+                    public var entryEncryptionKeyDerivationIterationCount: Int?
+                    public var entryEncryptionKeyDerivationName: String?
+                    public var entryEncryptionKeyDerivationSize: Int?
+                    public var entryEncryptionKeyDerivationSalt: Data?
+                    
+                    public enum fileEntryEncryptionDataKeyDerivationCodingKeys: String, CodingKey {
+                        case entryEncryptionKeyDerivationIterationCount = "manifest:iteration-count"
+                        case entryEncryptionKeyDerivationName = "manifest:key-derivation-name"
+                        case entryEncryptionKeyDerivationSize = "manifest:key-size"
+                        case entryEncryptionKeyDerivationSalt = "manifest:salt"
+                    }
+                }
+                class fileEntryEncryptionDataStartKeyGeneration: Codable, ObservableObject {
+                    public var entryEncryptionKeyGenerationSize: Int?
+                    public var entryEncryptionKeyGenerationName: String?
+                    
+                    public enum fileEntryEncryptionDataStartKeyGenerationCodingKeys: String, CodingKey {
+                        case entryEncryptionKeyGenerationSize = "manifest:key-size"
+                        case entryEncryptionKeyGenerationName = "manifest:start-key-generation-name"
+                    }
                 }
                 
             }
@@ -201,112 +250,6 @@ class documentBundle: Codable, ObservableObject {
 
 
 
-
-    
-
-class DocumentData: ObservableObject {
-    @Published var fileURL: URL?
-    @Published var metaXML: URL?
-    @Published var contentXML: URL?
-    @Published var settingsXML: URL?
-}
-
-class DocumentContents: ObservableObject {
-    @Published var content: String?
-    @Published var styles: String?
-    @Published var meta: String?
-    @Published var settings: String?
-    @Published var manifest: String?
-    @Published var resources: Data?
-}
-
-class ODFManifest: ObservableObject {
-    @Published var manifestManifest: String?
-    @Published var manifestVersion: String?
-    @Published var manifestEncryptedKey: EncryptedKey?
-    @Published var manifestFileEntry: FileEntry?
-    @Published var contentFile: URL?
-    @Published var stylesFile: URL?
-    @Published var elementsOfFile: URL?
-    @Published var filePrefix: URL?
-    @Published var fileSuffix: URL?
-    
-    class FileEntry {
-        var manifestFileEntryFullPath: String?
-        var manifestFileEntryMediaType: String?
-        var manifestFileEntryPreferredViewMode: String?
-        var manifestFileEntrySize: Int?
-        var manifestFileEntryVersion: String?
-        var manifestEncryptionData: ODFEncryption?
-    }
-    
-    class ODFEncryption {
-        var manifestChecksum: (any BinaryInteger)?
-        var manifestChecksumType: String?
-        var manifestEncryptionAlgorythm: String?
-        var manifestKeyDerivation: String?
-        var manifestStartKeyGeneration: String?
-    }
-    
-    class EncryptedKey {
-        var manifestChypherData: ChypherValue?
-        var manifestEncryptionMethod:
-        var manifestKeyInfo: 
-    }
-}
-
-
-class ODFMetadata: Codable {
-    var metadataODFGenerator: String?
-    var metadataODFTitle: String?
-    var metadataODFDescription: String?
-    var metadataODFSubject: String?
-    var metadataODFKeyword: String?
-    var metadataODFInitialCreator: String?
-    var metadataODFCreator: String?
-    var metadataODFPrintedBy: String?
-    var metadataODFCreationDate: Date?
-    var metadataODFDate: Date?
-    var metadataODFPrintDate: Date?
-    var metadataODFTemplate: String?
-    var metadataODFAutoReload: Bool?
-    var hyperlinkBehaviour: HyperlinkBehaviour
-    var metadataODFLanguage: String?
-    var metadataODFEditingCycles: Int?
-    var metadataODFEditingDuration: Int?
-    var metadataODFDocumentStatistics: ODFDocumentStatistics
-    var metadataODFUserDefined: ODFMetadataUserDefined
-
-    class ODFMetadataUserDefined: Codable {
-        var metadataODFCustomName: String?
-        var metadataODFCustomValue: String?
-        var metadataODFCustomKind: String?
-    }
-
-    class ODFDocumentStatistics: Codable {
-        var metadataStatsCellCount: Int
-        var metadataStatsCharacterCount: Int
-        var metadataStatsDrawCount: Int
-        var metadataStatsFrameCount: Int
-        var metadataStatsImageCount: Int
-        var metadataStatsNonWhiteCharCount: Int
-        var metadataStatsObjectCount: Int
-        var metadataStatsOLECount: Int
-        var metadataStatsPageCount: Int
-        var metadataStatsParagraphCount: Int
-        var metadataStatsRowCount: Int
-        var metadataStatsSentenceCount: Int
-        var metadataStatsSyllableCount: Int
-        var metadataStatsTableCount: Int
-        var metadataStatsWordCount: Int
-    }
-
-    class HyperlinkBehaviour: Codable {
-        var metadataHLBehaviourTargetFrameName: String?
-        var metadataHLBehaviourXLinkShow: String?
-    }
-
-}
 
 
 
