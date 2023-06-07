@@ -12,6 +12,7 @@ import XMLCoder
 import ZIPFoundation
 import CoreData
 
+
 let decoder = XMLDecoder()
 
 extension UTType {
@@ -19,28 +20,43 @@ extension UTType {
         UTType(importedAs: "org.oasis-open.opendocument.text")
         UTType(filenameExtension: ".odt")
         UTTypeReference(filenameExtension: ".odt")
-        UTType(mimeType: "")
+        UTType(mimeType: "application/vnd.oasis.opendocument.text", conformingTo: .text)
     }
 }
 
+// let documentODFType = UTType("org.oasis-open.opendocument.text")
+let documentODFType = UTType.openDocumentText
+
+let testmanifestXML = """
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest:manifest xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" manifest:version="1.3" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0">
+ <manifest:file-entry manifest:full-path="/" manifest:version="1.3" manifest:media-type="application/vnd.oasis.opendocument.text"/>
+ <manifest:file-entry manifest:full-path="Configurations2/accelerator/current.xml" manifest:media-type=""/>
+ <manifest:file-entry manifest:full-path="Configurations2/" manifest:media-type="application/vnd.sun.xml.ui.configuration"/>
+ <manifest:file-entry manifest:full-path="meta.xml" manifest:media-type="text/xml"/>
+ <manifest:file-entry manifest:full-path="styles.xml" manifest:media-type="text/xml"/>
+ <manifest:file-entry manifest:full-path="Pictures/100000010000019C0000018CD8AAB4BAB13D2E03.png" manifest:media-type="image/png"/>
+ <manifest:file-entry manifest:full-path="content.xml" manifest:media-type="text/xml"/>
+ <manifest:file-entry manifest:full-path="settings.xml" manifest:media-type="text/xml"/>
+ <manifest:file-entry manifest:full-path="manifest.rdf" manifest:media-type="application/rdf+xml"/>
+ <manifest:file-entry manifest:full-path="Thumbnails/thumbnail.png" manifest:media-type="image/png"/>
+</manifest:manifest>
+"""
+
+
 /// The Structure of the ODF Document should be set when decoding, but it also should be an ObservableObject
 
-class documentODTStruct: Codable, ObservableObject {
-    public var metaXML: URL?
-    public var contentXML: URL?
-    public var documentBundle: Codable?
-    public var manifestXML: URL!
-    }
-
-class documentBundle: Codable, ObservableObject {
+struct documentODT: Codable, FileDocument {
+    static var readableContentTypes: [UTType] {[.openDocumentText]}
+    
     public var documentManifest: documentManifest!
-    public var documentSettings: documentSettings
-    public var documentMeta: documentMeta
+    //public var documentSettings: documentSettings
+    //public var documentMeta: documentMeta
     
     public enum documentBundleCodingKeys: String, CodingKey {
         case documentManifest = "manifest:manifest"
-        case documentSettings = ""
-        case documentMeta = ""
+        //case documentSettings = ""
+        // case documentMeta = ""
     }
     
     class documentManifest: Codable, ObservableObject {
@@ -51,6 +67,12 @@ class documentBundle: Codable, ObservableObject {
             case manifestManifest = "manifest:manifest"
             case manifestEncrypedKey = "manifest:encrypted-key"
             case manifestVersion = "manifest:version"
+        }
+        
+        required init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: documentManifestCodingKeys.self)
+            
+            manifestVersion = try container.decodeIfPresent(String.self, forKey: .manifestVersion)
         }
         
         class manifestFileEntry: Codable, ObservableObject {
@@ -70,6 +92,16 @@ class documentBundle: Codable, ObservableObject {
                 case manifestFileEntryEncryptionData = "manifest:encryption-data"
             }
             
+            required init(from decoder: Decoder) throws {
+                let container = try decoder.container(keyedBy: manifestFileEntryCodingKeys.self)
+                manifestFileEntryPath = try container.decodeIfPresent(URL.self, forKey: .manifestFileEntryPath)
+                manifestFileEntryMediaType = try container.decodeIfPresent(String.self, forKey: .manifestFileEntryMediaType)
+                manifestFileEntryPreferredViewMode = try container.decodeIfPresent(String.self, forKey: .manifestFileEntryPreferredViewMode)
+                manifestFileEntrySize = try container.decodeIfPresent(Int.self, forKey: .manifestFileEntrySize)
+                manifestFileEntryVersion = try container.decodeIfPresent(Double.self, forKey: .manifestFileEntryVersion)
+                manifestFileEntryEncryptionData = try container.decodeIfPresent(fileEntryEncryptionData.self, forKey: .manifestFileEntryEncryptionData)
+            }
+            
             class fileEntryEncryptionData: Codable, ObservableObject {
                 public var fileEntryEncryptionDataChecksum: String?
                 public var fileEntryEncryptionDataChecksumType: String?
@@ -83,6 +115,11 @@ class documentBundle: Codable, ObservableObject {
                     case fileEntryEncryptionDataAlgorithm = "manifest:algorithm"
                     case fileEntryEncryptionDataKeyDerivation = "manifest:key-derivation"
                     case fileEntryEncryptionDataStartKeyGeneration = "manifest:start-key-generation"
+                }
+                
+                required init(from decoder: Decoder) throws {
+                    let container = try decoder.container(keyedBy: fileEntryEncryptionDataCodingKeys.self)
+                    fileEntryEncryptionDataChecksum = try container.decodeIfPresent(String.self, forKey: .fileEntryEncryptionDataChecksum)
                 }
                 
                 class fileEntryEncryptionDataAlgorithm: Codable, ObservableObject {
@@ -118,10 +155,11 @@ class documentBundle: Codable, ObservableObject {
                 }
                 
             }
-        }
+            
+            
         
     }
-        
+    
     class documentMeta: Codable, ObservableObject {
         public var metadataODFGenerator: String?
         public var metadataODFTitle: String?
@@ -219,106 +257,36 @@ class documentBundle: Codable, ObservableObject {
             
         }
     }
-
-        
-        public var documentManifest: Codable {
-            
-        }
-        public var documentStyles: Codable {
-            
-        }
-
-        public var documentSettings: Codable {
-            
-        }
-        public var documentContent: Codable {
-            
-        }
-        public var resources: Codable {
-            
-        }
-    }
+    
+    
+    //public var documentManifest: Codable {}
+    //public var documentStyles: Codable {}
+    //public var documentSettings: Codable {}
+    //public var documentContent: Codable {}
+    //public var resources: Codable {}
+    
     public var settingsXML: URL?
+    
+    
+    init(configuration: ReadConfiguration) throws {
+        CocoaError.coderReadCorrupt
+    }
+    
+    func fileWrapper(configuration: Self.WriteConfiguration) throws -> FileWrapper {
+        
+    }
+    
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-struct ODFDocument: FileDocument, Codable {
-    static var readableContentTypes: [UTType] { [.openDocumentText] }
-    static var writableContentTypes: [UTType] { [.openDocumentText] }
+func decodeDocument() {
+    // create an XMLDecoder instance
     
-    var metadata: ODFMetadata
-    //var content: ODFContent
-    //var style: ODFStyle
-    //var settings: ODFSettings
-    var manifest: ODFManifest
-    //var resources: ODFResources
     
-    init(from decoder: XMLDecoder) throws {
-        
-        //General settings for the decoder
-        
-        decoder.shouldProcessNamespaces = true
-        
-        enum ManifestODFCodingKeys: String, CodingKey {
-            case contentFile = "odf:ContentFile"
-            case stylesFile = "odf:StylesFile"
-            case fileElement = "odf:Element"
-            case filePrefix = "odf:prefix"
-            case fileSuffix = "odf:suffix"
-        }
-        
-
-        print("--- Loading new document ---")
-        
-        //Decode METADATA
-        
-        //METADATA Coding Keys
-              
-
-        
-        //Actual decodification of METADATA
-        
-        
-        decoder.keyDecodingStrategy = .custom{ keys in metadataODFCodingKeys as! any CodingKey}
-        
-        metadata = try decoder.decode(ODFMetadata.self, from: Data(contentsOf: DocumentData().metaXML!))
-        
-        // Access the decoded metadata values
-        print("Loading document metadata:")
-        print("")
-        print("Generator: \(String(describing: metadata.metadataODFCreator))") // "MicrosoftOffice/15.0 MicrosoftWord"
-        print("Title: \(String(describing: metadata.metadataODFTitle))") // "Costituzione della Repubblica insuliana"
-        print("Creator: \(String(describing: metadata.metadataODFCreator))") // "Simone Alghisi"
-        print("Date: \(String(describing: metadata.metadataODFDate))") // "2023-03-03T12:07:00Z"
-        print("Page count: \(metadata.metadataODFDocumentStatistics.metadataStatsPageCount)") // 53
-        print("Word count: \(metadata.metadataODFDocumentStatistics.metadataStatsWordCount)") // 13918
-        print("")
-        
-        
-        
-        
-        
-        
+    // create an XMLDocument instance from the XML string
+    let xmlDocument = try XMLDocument(xmlString: testmanifestXML, options: [.])
     
-    }
-    
-    init(fileWrapper: FileWrapper, contentType: UTType) throws {
-        guard contentType == .openDocumentText else {
-            print("Couldn't decode file!")
-            throw CocoaError(.fileReadUnsupportedScheme)
-        }
-    }
+    // decode the documentManifest type from the XMLDocument instance
+    let manifest = try decoder.decode(documentManifest.self, from: xmlDocument)
 }
-///
