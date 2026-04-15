@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		830A28202D8F0364002522CC /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830A281F2D8F0364002522CC /* WelcomeScreen.swift */; };
 		831C671329BBC9C40059C12A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 831C671229BBC9C40059C12A /* Info.plist */; };
 		831C671829BBCA000059C12A /* LiberWriter.html in Resources */ = {isa = PBXBuildFile; fileRef = 831C671629BBCA000059C12A /* LiberWriter.html */; };
 		831C671B29BBCA360059C12A /* LiberWriter.helpindex in Resources */ = {isa = PBXBuildFile; fileRef = 831C671929BBCA360059C12A /* LiberWriter.helpindex */; };
@@ -15,26 +16,29 @@
 		831C672629BBDAC90059C12A /* TableFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C672529BBDAC90059C12A /* TableFormatting.swift */; };
 		831C672929BBDFEE0059C12A /* QuickFormatParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831C672829BBDFEE0059C12A /* QuickFormatParagraph.swift */; };
 		83308A9429BCEBCD006609A8 /* CodeDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83308A9329BCEBCD006609A8 /* CodeDecode.swift */; };
+		833151DD2D87470F005AEE3B /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833151DC2D87470F005AEE3B /* DocumentView.swift */; };
 		8337ED5829BA626500ED60A6 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5729BA626500ED60A6 /* MainMenu.swift */; };
 		8337ED5A29BA751500ED60A6 /* FormattingSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5929BA751500ED60A6 /* FormattingSidebar.swift */; };
 		8337ED5C29BA757300ED60A6 /* StylesSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5B29BA757300ED60A6 /* StylesSidebar.swift */; };
 		8337ED5E29BA75A300ED60A6 /* NavigatorSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5D29BA75A300ED60A6 /* NavigatorSidebar.swift */; };
-		8337ED6029BA75D500ED60A6 /* FourthSegmentSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5F29BA75D500ED60A6 /* FourthSegmentSidebar.swift */; };
-		833D58AD29BC743700C2F543 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 833D58AC29BC743700C2F543 /* ZIPFoundation */; };
-		833D58AF29BC749C00C2F543 /* ODTDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D58AE29BC749C00C2F543 /* ODTDocument.swift */; };
-		833D58B229BC750A00C2F543 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 833D58B129BC750A00C2F543 /* XMLCoder */; };
+		8337ED6029BA75D500ED60A6 /* ReviewSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337ED5F29BA75D500ED60A6 /* ReviewSidebar.swift */; };
 		835B897A29BF6CA60070D5E2 /* ZipUnzip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B897929BF6CA60070D5E2 /* ZipUnzip.swift */; };
 		8378D3AF29B9EEFD00E3889C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8378D3AE29B9EEFD00E3889C /* MainView.swift */; };
 		8378D3B129B9F0E300E3889C /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8378D3B029B9F0E300E3889C /* SidebarView.swift */; };
+		8389E0302D8E139D00D05AE9 /* RightSidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389E02F2D8E139D00D05AE9 /* RightSidebarView.swift */; };
+		838B03382D74AF1C0022B11E /* ODTFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838B03372D74AF170022B11E /* ODTFile.swift */; };
 		83B80BFE29B9EED4006FBF43 /* LiberWriterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80BFD29B9EED4006FBF43 /* LiberWriterApp.swift */; };
-		83B80C0029B9EED4006FBF43 /* LiberWriterDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80BFF29B9EED4006FBF43 /* LiberWriterDocument.swift */; };
-		83B80C0229B9EED4006FBF43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C0129B9EED4006FBF43 /* ContentView.swift */; };
 		83B80C0429B9EED5006FBF43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B80C0329B9EED5006FBF43 /* Assets.xcassets */; };
 		83B80C0729B9EED5006FBF43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83B80C0629B9EED5006FBF43 /* Preview Assets.xcassets */; };
 		83B80C1329B9EED5006FBF43 /* LiberWriterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C1229B9EED5006FBF43 /* LiberWriterTests.swift */; };
 		83B80C1D29B9EED5006FBF43 /* LiberWriterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C1C29B9EED5006FBF43 /* LiberWriterUITests.swift */; };
 		83B80C1F29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B80C1E29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift */; };
+		83D201792D874C9000E89C4D /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D201782D874C8B00E89C4D /* UserSettings.swift */; };
+		83D2017D2D87504F00E89C4D /* PageSetupSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2017C2D87504B00E89C4D /* PageSetupSidebar.swift */; };
+		83D2017F2D8750BD00E89C4D /* ViewSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D2017E2D8750BA00E89C4D /* ViewSidebar.swift */; };
 		83DA19B829BB88C00072C1DB /* QuickFormatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DA19B729BB88C00072C1DB /* QuickFormatTable.swift */; };
+		83E1DFA32A3EF1AC0084B7C8 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 83E1DFA22A3EF1AC0084B7C8 /* XMLCoder */; };
+		83FAC1772D8740EA00D01873 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 83FAC1762D8740EA00D01873 /* ZIPFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		830A281F2D8F0364002522CC /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		831C671229BBC9C40059C12A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831C671729BBCA000059C12A /* English */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = English; path = LiberWriter.html; sourceTree = "<group>"; };
 		831C671A29BBCA360059C12A /* EN */ = {isa = PBXFileReference; lastKnownFileType = text; name = EN; path = LiberWriter.helpindex; sourceTree = "<group>"; };
@@ -63,19 +68,19 @@
 		831C672529BBDAC90059C12A /* TableFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableFormatting.swift; sourceTree = "<group>"; };
 		831C672829BBDFEE0059C12A /* QuickFormatParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFormatParagraph.swift; sourceTree = "<group>"; };
 		83308A9329BCEBCD006609A8 /* CodeDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeDecode.swift; sourceTree = "<group>"; };
+		833151DC2D87470F005AEE3B /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
 		8337ED5729BA626500ED60A6 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		8337ED5929BA751500ED60A6 /* FormattingSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingSidebar.swift; sourceTree = "<group>"; };
 		8337ED5B29BA757300ED60A6 /* StylesSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesSidebar.swift; sourceTree = "<group>"; };
 		8337ED5D29BA75A300ED60A6 /* NavigatorSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorSidebar.swift; sourceTree = "<group>"; };
-		8337ED5F29BA75D500ED60A6 /* FourthSegmentSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthSegmentSidebar.swift; sourceTree = "<group>"; };
-		833D58AE29BC749C00C2F543 /* ODTDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODTDocument.swift; sourceTree = "<group>"; };
+		8337ED5F29BA75D500ED60A6 /* ReviewSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSidebar.swift; sourceTree = "<group>"; };
 		835B897929BF6CA60070D5E2 /* ZipUnzip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipUnzip.swift; sourceTree = "<group>"; };
 		8378D3AE29B9EEFD00E3889C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8378D3B029B9F0E300E3889C /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		8389E02F2D8E139D00D05AE9 /* RightSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightSidebarView.swift; sourceTree = "<group>"; };
+		838B03372D74AF170022B11E /* ODTFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ODTFile.swift; sourceTree = "<group>"; };
 		83B80BFA29B9EED4006FBF43 /* LiberWriter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiberWriter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B80BFD29B9EED4006FBF43 /* LiberWriterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterApp.swift; sourceTree = "<group>"; };
-		83B80BFF29B9EED4006FBF43 /* LiberWriterDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterDocument.swift; sourceTree = "<group>"; };
-		83B80C0129B9EED4006FBF43 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		83B80C0329B9EED5006FBF43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83B80C0629B9EED5006FBF43 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		83B80C0829B9EED5006FBF43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +90,9 @@
 		83B80C1829B9EED5006FBF43 /* LiberWriterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiberWriterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B80C1C29B9EED5006FBF43 /* LiberWriterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterUITests.swift; sourceTree = "<group>"; };
 		83B80C1E29B9EED5006FBF43 /* LiberWriterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberWriterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		83D201782D874C8B00E89C4D /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		83D2017C2D87504B00E89C4D /* PageSetupSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSetupSidebar.swift; sourceTree = "<group>"; };
+		83D2017E2D8750BA00E89C4D /* ViewSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSidebar.swift; sourceTree = "<group>"; };
 		83DA19B729BB88C00072C1DB /* QuickFormatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickFormatTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,8 +101,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833D58B229BC750A00C2F543 /* XMLCoder in Frameworks */,
-				833D58AD29BC743700C2F543 /* ZIPFoundation in Frameworks */,
+				83E1DFA32A3EF1AC0084B7C8 /* XMLCoder in Frameworks */,
+				83FAC1772D8740EA00D01873 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +123,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		830A28212D8F06F5002522CC /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				8389E02F2D8E139D00D05AE9 /* RightSidebarView.swift */,
+			);
+			path = Navigator;
+			sourceTree = "<group>";
+		};
 		831C670F29BBC96D0059C12A /* LiberWriter.help */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,16 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				831C671529BBC9DD0059C12A /* EN.lproj */,
-				831C671429BBC9D80059C12A /* shrd */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		831C671429BBC9D80059C12A /* shrd */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = shrd;
 			sourceTree = "<group>";
 		};
 		831C671529BBC9DD0059C12A /* EN.lproj */ = {
@@ -196,11 +204,21 @@
 			children = (
 				8378D3B029B9F0E300E3889C /* SidebarView.swift */,
 				8337ED5929BA751500ED60A6 /* FormattingSidebar.swift */,
+				83D2017C2D87504B00E89C4D /* PageSetupSidebar.swift */,
+				83D2017E2D8750BA00E89C4D /* ViewSidebar.swift */,
 				8337ED5B29BA757300ED60A6 /* StylesSidebar.swift */,
 				8337ED5D29BA75A300ED60A6 /* NavigatorSidebar.swift */,
-				8337ED5F29BA75D500ED60A6 /* FourthSegmentSidebar.swift */,
+				8337ED5F29BA75D500ED60A6 /* ReviewSidebar.swift */,
 			);
 			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		838B03362D74AED40022B11E /* ODFFileFormat */ = {
+			isa = PBXGroup;
+			children = (
+				838B03372D74AF170022B11E /* ODTFile.swift */,
+			);
+			path = ODFFileFormat;
 			sourceTree = "<group>";
 		};
 		83B80BF129B9EED4006FBF43 = {
@@ -228,13 +246,15 @@
 			isa = PBXGroup;
 			children = (
 				83B80BFD29B9EED4006FBF43 /* LiberWriterApp.swift */,
+				830A281F2D8F0364002522CC /* WelcomeScreen.swift */,
 				8337ED5729BA626500ED60A6 /* MainMenu.swift */,
-				83B80BFF29B9EED4006FBF43 /* LiberWriterDocument.swift */,
-				833D58AE29BC749C00C2F543 /* ODTDocument.swift */,
+				83D201782D874C8B00E89C4D /* UserSettings.swift */,
 				835B897929BF6CA60070D5E2 /* ZipUnzip.swift */,
 				83308A9329BCEBCD006609A8 /* CodeDecode.swift */,
 				8378D3AE29B9EEFD00E3889C /* MainView.swift */,
-				83B80C0129B9EED4006FBF43 /* ContentView.swift */,
+				830A28212D8F06F5002522CC /* Navigator */,
+				833151DC2D87470F005AEE3B /* DocumentView.swift */,
+				838B03362D74AED40022B11E /* ODFFileFormat */,
 				83B80C0329B9EED5006FBF43 /* Assets.xcassets */,
 				831C672729BBDAD00059C12A /* FormattingWindows */,
 				83DA19B929BB89E10072C1DB /* QuickFormats */,
@@ -297,8 +317,8 @@
 			);
 			name = LiberWriter;
 			packageProductDependencies = (
-				833D58AC29BC743700C2F543 /* ZIPFoundation */,
-				833D58B129BC750A00C2F543 /* XMLCoder */,
+				83E1DFA22A3EF1AC0084B7C8 /* XMLCoder */,
+				83FAC1762D8740EA00D01873 /* ZIPFoundation */,
 			);
 			productName = LiberWriter;
 			productReference = 83B80BFA29B9EED4006FBF43 /* LiberWriter.app */;
@@ -348,7 +368,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					83B80BF929B9EED4006FBF43 = {
 						CreatedOnToolsVersion = 14.2;
@@ -370,13 +390,12 @@
 			knownRegions = (
 				en,
 				Base,
-				English,
 				EN,
 			);
 			mainGroup = 83B80BF129B9EED4006FBF43;
 			packageReferences = (
-				833D58AB29BC743700C2F543 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
-				833D58B029BC750A00C2F543 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				83E1DFA12A3EF1AC0084B7C8 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				83FAC1752D8740EA00D01873 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			productRefGroup = 83B80BFB29B9EED4006FBF43 /* Products */;
 			projectDirPath = "";
@@ -425,22 +444,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83B80C0029B9EED4006FBF43 /* LiberWriterDocument.swift in Sources */,
 				83DA19B829BB88C00072C1DB /* QuickFormatTable.swift in Sources */,
+				8389E0302D8E139D00D05AE9 /* RightSidebarView.swift in Sources */,
 				835B897A29BF6CA60070D5E2 /* ZipUnzip.swift in Sources */,
+				830A28202D8F0364002522CC /* WelcomeScreen.swift in Sources */,
+				838B03382D74AF1C0022B11E /* ODTFile.swift in Sources */,
+				83D2017F2D8750BD00E89C4D /* ViewSidebar.swift in Sources */,
 				83308A9429BCEBCD006609A8 /* CodeDecode.swift in Sources */,
 				8337ED5829BA626500ED60A6 /* MainMenu.swift in Sources */,
 				831C672629BBDAC90059C12A /* TableFormatting.swift in Sources */,
-				833D58AF29BC749C00C2F543 /* ODTDocument.swift in Sources */,
 				8378D3AF29B9EEFD00E3889C /* MainView.swift in Sources */,
+				833151DD2D87470F005AEE3B /* DocumentView.swift in Sources */,
 				8378D3B129B9F0E300E3889C /* SidebarView.swift in Sources */,
 				831C672929BBDFEE0059C12A /* QuickFormatParagraph.swift in Sources */,
 				8337ED5E29BA75A300ED60A6 /* NavigatorSidebar.swift in Sources */,
 				8337ED5C29BA757300ED60A6 /* StylesSidebar.swift in Sources */,
-				8337ED6029BA75D500ED60A6 /* FourthSegmentSidebar.swift in Sources */,
+				83D2017D2D87504F00E89C4D /* PageSetupSidebar.swift in Sources */,
+				8337ED6029BA75D500ED60A6 /* ReviewSidebar.swift in Sources */,
+				83D201792D874C9000E89C4D /* UserSettings.swift in Sources */,
 				8337ED5A29BA751500ED60A6 /* FormattingSidebar.swift in Sources */,
 				83B80BFE29B9EED4006FBF43 /* LiberWriterApp.swift in Sources */,
-				83B80C0229B9EED4006FBF43 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +538,10 @@
 		83B80C2029B9EED5006FBF43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -545,9 +571,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -568,14 +596,20 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				USE_HEADERMAP = YES;
 			};
 			name = Debug;
 		};
 		83B80C2129B9EED5006FBF43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -605,9 +639,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -619,21 +655,26 @@
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
+				USE_HEADERMAP = YES;
 			};
 			name = Release;
 		};
 		83B80C2329B9EED5006FBF43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = MacAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LiberWriter/LiberWriter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4j;
+				CURRENT_PROJECT_VERSION = 2503c;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"LiberWriter/Preview Content\"";
 				DEVELOPMENT_TEAM = 7Z5RK5M5DA;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -647,7 +688,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = "0.0.3 (pre-⍺)";
 				PRODUCT_BUNDLE_IDENTIFIER = it.sa.LiberWriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -658,12 +699,13 @@
 		83B80C2429B9EED5006FBF43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = MacAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LiberWriter/LiberWriter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4j;
+				CURRENT_PROJECT_VERSION = 2503c;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"LiberWriter/Preview Content\"";
 				DEVELOPMENT_TEAM = 7Z5RK5M5DA;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -677,7 +719,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 0.0.4;
+				MARKETING_VERSION = "0.0.3 (pre-⍺)";
 				PRODUCT_BUNDLE_IDENTIFIER = it.sa.LiberWriter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -692,6 +734,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7Z5RK5M5DA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -711,6 +754,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7Z5RK5M5DA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -729,6 +773,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7Z5RK5M5DA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -736,6 +781,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TEST_HOST = "";
 				TEST_TARGET_NAME = LiberWriter;
 			};
 			name = Debug;
@@ -746,6 +792,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 7Z5RK5M5DA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -753,6 +800,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TEST_HOST = "";
 				TEST_TARGET_NAME = LiberWriter;
 			};
 			name = Release;
@@ -799,34 +847,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		833D58AB29BC743700C2F543 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
-			requirement = {
-				branch = development;
-				kind = branch;
-			};
-		};
-		833D58B029BC750A00C2F543 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+		83E1DFA12A3EF1AC0084B7C8 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CoreOffice/XMLCoder.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.17.1;
+			};
+		};
+		83FAC1752D8740EA00D01873 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		833D58AC29BC743700C2F543 /* ZIPFoundation */ = {
+		83E1DFA22A3EF1AC0084B7C8 /* XMLCoder */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 833D58AB29BC743700C2F543 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
-			productName = ZIPFoundation;
-		};
-		833D58B129BC750A00C2F543 /* XMLCoder */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 833D58B029BC750A00C2F543 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			package = 83E1DFA12A3EF1AC0084B7C8 /* XCRemoteSwiftPackageReference "XMLCoder" */;
 			productName = XMLCoder;
+		};
+		83FAC1762D8740EA00D01873 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83FAC1752D8740EA00D01873 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

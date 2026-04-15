@@ -10,60 +10,45 @@ import SwiftUI
 import UniformTypeIdentifiers
 import ZIPFoundation
 
-public let appBundle = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
-public var cacheURL = try! FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-public var tempAppStorage = cacheURL.appendingPathComponent(appBundle)
-
-public let openPanel = NSOpenPanel()
-
-// FILE PICKER PANEL
-
-public func presentFilePickerAndLoadDocument() {
-    openPanel.allowedContentTypes = [UTType.openDocumentText]
-    openPanel.canChooseDirectories = false
-    openPanel.allowsMultipleSelection = false
-    openPanel.begin { result in
-        if result == .OK {
-            guard let selectedFileUrl = openPanel.urls.first else { return }
-            DocumentData().fileURL = selectedFileUrl
+struct ZipUnzipODT: View {
+    @State var selectedFileURL: URL?
+    @State private var showAlert = false
+    
+    var body: some View {
+        VStack {
+            Button("Select ODT File") {
+                openFilePicker()
+            }
+        }
+        .alert("ODT File Opened", isPresented: $showAlert) {
+            Button("OK", role: .cancel) {}
+        }
+    }
+    
+    private func openFilePicker() {
+        let panel = NSOpenPanel()
+        panel.allowedContentTypes = [UTType(filenameExtension: "odt")!]
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = false
+        
+        if panel.runModal() == .OK, let url = panel.url {
+            selectedFileURL = url
+            do {
+                let odtFile = try ODTFile(fileURL: url)
+                print("Content XML: \(odtFile.contentXML.prefix(100))...")
+                print("Styles XML: \(odtFile.stylesXML.prefix(100))...")
+                print("Meta XML: \(odtFile.metaXML.prefix(100))...")
+                
+                showAlert = true
+            } catch {
+                print("Failed to open ODT file: \(error.localizedDescription)")
+            }
         }
     }
 }
 
-// FILE ZIPPING AND UNZIPPING
-
-func unzipFile() {
-    var chosenFile = DocumentData().fileURL
-    var tempExpandedFile = tempAppStorage.appendingPathExtension(String(describing: chosenFile))
-    do {
-        try FileManager().createDirectory(at: tempExpandedFile, withIntermediateDirectories: true)
-        try FileManager().unzipItem(at: chosenFile!, to: tempExpandedFile)
-
-        print("XML estraction successful!")
-        print("Temp extracted file is available at this address until you close LiberWriter: \(tempExpandedFile.path())")
-
-    } catch {
-        print("XML extraction FAILED! (Check permissions?)")
-        print("Any temp extracted and partially extracted file (if any) is available at this address until you close LiberWriter: \(tempExpandedFile)")
-    }
-    
-        var documentContentURL: URL?
-        var documentStylesURL: URL?
-        var documentMetaURL: URL?
-        var documentSettingsURL: URL?
-        var documentManifestURL: URL?
-        var documentResourcesURL:URL?
-    
-    documentContentURL = tempExpandedFile.appending(component: "/content.xml")
-}
-
-func deleteTemps() {
-    do {
-        try FileManager().removeItem(atPath: "\(tempAppStorage.path())/*")
-        print("Purged LiberWriter temp files at: \(tempAppStorage.path()).")
-
-    } catch {
-        print("Couldn't delete temp files! (Permissions?)")
-        print("To delete them manually, temp folder is located at: \(tempAppStorage.path())")
+struct ZipUnzipODT_Previews: PreviewProvider {
+    static var previews: some View {
+        ZipUnzipODT()
     }
 }

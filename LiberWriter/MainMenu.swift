@@ -101,14 +101,12 @@ struct MainMenu: Commands {
         
         CommandGroup(after: CommandGroupPlacement.help, addition: {
             Divider()
-            Button("Donate to the Developer", action: {})
+            Button("Donate to the Developer", action: {
+                let url = URL(string: "https://sa.lyber.office.it/donate/")
+                NSWorkspace.shared.open(url!)
+                })
         })
         
-        
-        CommandGroup(replacing: CommandGroupPlacement.importExport, addition: {
-            Divider()
-            Button("Open…", action: {presentFilePickerAndLoadDocument()})
-        })
                 
             }
         }

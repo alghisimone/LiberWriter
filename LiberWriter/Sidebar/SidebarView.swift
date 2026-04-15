@@ -8,41 +8,41 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @Binding var selectedSegment: Int
-    @EnvironmentObject var userSettings: UserSettings
+    
+    @Binding var selectedSidebarSegment: Int
+
     
     var body: some View {
         NavigationStack {
+            Picker(selection: $selectedSidebarSegment, label: Image("")) {
+                Image(systemName: "paintbrush").tag(0).help("Formatting")
+                Image(systemName: "doc").tag(1).help("Page Setup")
+                Image(systemName: "eye").tag(2).help("View")
+                Image(systemName: "paintpalette").tag(3).help("Styles")
+                Image(systemName: "highlighter").tag(4).help("Review")
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding([.horizontal,.top]).buttonStyle(.bordered)
+            Divider()
             ScrollView(.vertical) {
-                    switch selectedSegment {
+                    switch selectedSidebarSegment {
                     case 0:
                         FormattingSidebar()
                     case 1:
-                        StylesSidebar()
+                        PageSetupSidebar()
                     case 2:
-                        NavigatorSidebar()
+                        ViewSidebar()
                     case 3:
-                        FourthSegmentSidebar()
+                        StylesSidebar()
+                    case 4:
+                        ReviewSidebar()
+
+                        
                     default:
-                        Text("Invalid selection")
+                        FormattingSidebar()
                     }
-            }.padding(.leading).padding(.trailing).padding(.top)
+            }.padding([.leading, .trailing])
         }
-        .environmentObject(userSettings)
-        .frame(minWidth: 300, maxWidth: 450) // adjust the width to match the width of the sidebar
-        .toolbar {
-            ToolbarItemGroup(placement: .primaryAction){
-                
-                    Picker(selection: $selectedSegment, label: Image("")) {
-                        Image(systemName: "paintbrush").tag(0).help("Formatting")
-                        Image(systemName: "textformat").tag(1).help("Styles")
-                        Image(systemName: "helm").tag(2).help("Navigator")
-                        Image(systemName: "pencil").tag(3)
-                    }.frame(width: 250)
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.horizontal, 10)
-            }
-            }
         }
 
     }

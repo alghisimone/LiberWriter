@@ -1,99 +1,45 @@
-//
-//  MainView.swift
-//  LiberWriter
-//
-//  Created by Simone Alghisi on 09/03/23.
-//
-
 import SwiftUI
 
 struct MainView: View {
+    let fileURL: URL // Added fileURL to store the document location
+    @EnvironmentObject var userSettings: UserSettings // Added environment object
     
-    @EnvironmentObject var userSettings: UserSettings
+    @State private var isLeftSidebarVisible: Bool = true
+    @State private var columnVisibility = NavigationSplitViewVisibility.doubleColumn
+    @State private var isSecondaryToolbarVisible: Bool = false
     
-    
-    @State var fileContent: String = ""
-    @State var selectedSidebarSegment = 0
-    
-    
-    
-    
+    @State private var selectedSidebarSegment: Int = 0
+    @State private var selectedNavigatorSegment: Int = 0
     
     var body: some View {
-        HSplitView {
-            workingArea.toolbar {
-                ToolbarItemGroup{
-                    Button(action: {
-                                // Add your button action here
-                            }) {
-                                Label("Chart", systemImage: "chart.bar")
-                    }
-                    
-                    Button(action: {
-                        // Add your button action here
-                    }) {
-                        Label("Button 2", systemImage: "rectangle.and.pencil.and.ellipsis")
+        
+        NavigationSplitView {
+            RightSidebarView(selectedNavigatorSegment: $selectedNavigatorSegment).frame(minWidth: 200, maxWidth: 300)
+        } content: {
+            DocumentView().toolbar(content: {
+                ToolbarItem(placement: .automatic) {
+                    Button("Save") {
+                        print("Save action triggered")
                     }
                 }
-                ToolbarItemGroup{
-                    Button(action: {
-                        print("Trying to show Quick Formatting from MenuBar. Is it shown?")
-                        print(UserSettings().showSecondaryToolbar)
-                        userSettings.showSecondaryToolbar.toggle()
-                        print("Did I do that?")
-                    }) {
-                        Label("Button 1", systemImage: "wand.and.stars").help("Toggle Quick Formatting Toolbar")
+                ToolbarItem(placement: .automatic) {
+                    Button("Export") {
+                        print("Export action triggered")
                     }
-
-                        Button(action: {
-                            userSettings.showingSidebar.toggle()
-                        }) {
-                            Label("Hide Sidebar", systemImage: "sidebar.right").help("Toggle Sidebar")
-                        }
-                    Spacer()
+                }
+                ToolbarItem(placement: .automatic) {
+                    Button("Print") {
+                        print("Print action triggered")
                     }
-                    
-            }
-            if userSettings.showingSidebar {
-                SidebarView(selectedSegment: $selectedSidebarSegment).environmentObject(userSettings)
-                
+                }
+            })
+        } detail: {
+            SidebarView(selectedSidebarSegment: $selectedSidebarSegment).frame(minWidth: 300, maxWidth: 500)
         }
-                
-            }.environmentObject(userSettings)
-        
-    }
-    
-    var workingArea: some View {
-        ZStack(alignment: .top) {
-            if userSettings.showSecondaryToolbar {
-                secondaryToolbar.environmentObject(userSettings)
-                    .background(Color(NSColor.windowBackgroundColor))
-                    .zIndex(1)
-                    .environmentObject(userSettings)
-                TextEditor(text: $fileContent)
-                    .frame(minWidth: 500, minHeight: 500).environmentObject(userSettings).environmentObject(userSettings)
-                    .zIndex(0).offset(x: 0, y: 30)
-            } else {
-                // Content View
-                TextEditor(text: $fileContent)
-                    .frame(minWidth: 500, minHeight: 500).environmentObject(userSettings).environmentObject(userSettings)
-                
-                // Secondary Toolbar
-            }
-        }
-    }
-    
-    var secondaryToolbar: some View {
-        HStack {
-            Button(action: {
-                userSettings.showSecondaryToolbar.toggle()
-            }) {
-                Image(systemName: "xmark")
-            }.environmentObject(userSettings)
-                .buttonStyle(.borderless)
-            QuickFormatTable()
-            
-        }.padding(.horizontal)
-            .frame(maxHeight: 30)
     }
 }
+
+
+
+        
+
